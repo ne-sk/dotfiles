@@ -1,177 +1,337 @@
+/* =============================================================================
+*
+* Waybar configuration - Modern Style (Simplified)
+*
+* Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+*
+* =========================================================================== */
+
+@import "themes/kanagawa.css";
+
+/* -----------------------------------------------------------------------------
+* Base styles
+* -------------------------------------------------------------------------- */
+
 * {
   border: none;
   border-radius: 0;
-  /* `otf-font-awesome` is required to be installed for icons */
-  font-family: Liberation Mono;
-  min-height: 20px;
+  font-family: "JetBrains Mono", "Hack Nerd Font", "UbuntuMono", monospace;
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
 }
 
 window#waybar {
-  background: transparent;
+  background: rgba(15, 15, 20, 0.3);
+  border-bottom: 1px solid rgba(149, 127, 184, 0.3);
 }
 
-window#waybar.hidden {
-  opacity: 0.2;
+/* -----------------------------------------------------------------------------
+* Tooltips
+* -------------------------------------------------------------------------- */
+
+tooltip {
+  background: @background-primary;
+  color: @text;
+  border: 1px solid @border-color;
+  border-radius: 8px;
+  padding: 8px 12px;
 }
 
-#workspaces {
-  margin-right: 8px;
-  border-radius: 10px;
-  transition: none;
-  background: #383c4a;
-}
-
-#workspaces button {
-  transition: none;
-  color: #7c818c;
-  background: transparent;
-  padding: 5px;
-  font-size: 18px;
-}
-
-#workspaces button.persistent {
-  color: white;
+tooltip label {
+  color: @text;
   font-size: 12px;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#workspaces button:hover {
-  transition: none;
-  box-shadow: inherit;
-  text-shadow: inherit;
-  border-radius: inherit;
-  color: #383c4a;
-  background: #7c818c;
+/* -----------------------------------------------------------------------------
+* Workspaces
+* -------------------------------------------------------------------------- */
+
+#workspaces {
+  background: @background-primary;
+  padding: 2px;
+  margin: 6px 2px;
+  border-radius: 12px;
+  border: 2px solid @border-color;
 }
 
-#workspaces button.active {
-  color: greenyellow;
+#workspaces button {
+  padding: 3px 5px;
+  margin: 0 2px;
+  background: @background-primary;
+  color: @subtext0;
+  border-radius: 8px;
+  font-weight: bold;
+  border: 1px solid @border-color;
+}
+
+#workspaces button:hover {
+  background: @background-hover;
+  color: @lavender;
+  border-color: @mauve;
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+  background: @mauve;
+  color: @base;
+  font-weight: bold;
+  opacity: 1;
+  border-color: @pink;
 }
 
 #workspaces button.empty {
-  opacity: 0.4;
+  opacity: 0.3;
+  background: @background-secondary;
 }
 
-#workspaces button.focused {
-  color: white;
+#workspaces button.urgent {
+  background: @error;
+  color: @base;
+  border-color: @maroon;
 }
 
-#custom-pacman {
-  padding-left: 16px;
-  margin-right: 8px;
-  padding-right: 16px;
-  border-radius: 10px;
-  transition: none;
-  color: #ffffff;
-  background: #383c4a;
+/* -----------------------------------------------------------------------------
+* Window title
+* -------------------------------------------------------------------------- */
+
+#window {
+  background: @background-secondary;
+  color: @text;
+  padding: 4px 8px;
+  border-radius: 12px;
+  border: 1px solid @border-color;
+  font-weight: 500;
 }
+
+/* -----------------------------------------------------------------------------
+* Clock
+* -------------------------------------------------------------------------- */
 
 #clock {
-  padding-left: 16px;
-  padding-right: 16px;
-  border-radius: 10px;
-  transition: none;
-  color: #ffffff;
-  background: #383c4a;
+  background: @blue;
+  color: @base;
+  font-weight: bold;
+  margin: 6px 2px 6px 2px;
+  padding: 4px 6px;
+  border-radius: 12px;
+  font-size: 15px;
 }
 
-#pulseaudio {
-  margin-right: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  border-radius: 10px;
-  transition: none;
-  color: #ffffff;
-  background: #383c4a;
+/* -----------------------------------------------------------------------------
+* System monitoring modules
+* -------------------------------------------------------------------------- */
+
+#memory {
+  background: @background-primary;
+  color: @green;
+  border-left: 4px solid @green;
+  border-radius: 12px 0 0 12px;
+  margin: 6px 0;
+  padding: 4px 6px;
 }
 
-#pulseaudio.muted {
-  background-color: #90b1b1;
-  color: #2a5c45;
+#cpu {
+  background: @background-primary;
+  color: @blue;
+  border-left: 4px solid @blue;
+  margin: 6px 0px 6px 0;
+  padding: 4px 6px;
 }
 
-#custom-mem {
-  margin-right: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  border-radius: 10px;
-  transition: none;
-  color: #ffffff;
-  background: #383c4a;
+#temperature {
+  background: @background-primary;
+  color: @teal;
+  border-left: 4px solid @teal;
+  border-radius: 0 12px 12px 0;
+  margin: 6px 2px 6px 0;
+  padding: 4px 6px;
 }
+
+#temperature.critical {
+  background: @error;
+  color: @base;
+  border-left: 4px solid @maroon;
+}
+
+/* -----------------------------------------------------------------------------
+* Battery
+* -------------------------------------------------------------------------- */
 
 #battery {
-  margin-right: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  border-radius: 10px;
-  transition: none;
-  color: #ffffff;
-  background: #383c4a;
-}
-
-#network {
-  margin-right: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  border-radius: 10px;
-  transition: none;
-  color: #ffffff;
-  background: #383c4a;
-}
-
-#bluetooth {
-  margin-right: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  border-radius: 10px;
-  transition: none;
-  color: #ffffff;
-  background: #383c4a;
+  background: @background-primary;
+  color: @green;
+  border-left: 4px solid @green;
+  margin: 6px 2px;
+  padding: 4px 6px;
+  border-radius: 12px;
 }
 
 #battery.charging {
-  color: blue;
-  background-color: #26a65b;
+  color: @yellow;
+  border-left: 4px solid @yellow;
 }
 
-#battery.warning:not(.charging) {
-  background-color: #ffbe61;
-  color: black;
+#battery.warning {
+  background: @warning;
+  color: @base;
+  border-left: 4px solid @peach;
 }
 
 #battery.critical:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+  background: @error;
+  color: @base;
+  border-left: 4px solid @maroon;
 }
+
+/* -----------------------------------------------------------------------------
+* Audio and Backlight
+* -------------------------------------------------------------------------- */
+
+#backlight {
+  background: @background-primary;
+  color: @yellow;
+  border-left: 4px solid @yellow;
+  border-radius: 12px 0 0 12px;
+  margin: 6px 0 6px 2px;
+  padding: 4px 6px;
+}
+
+#pulseaudio {
+  background: @background-primary;
+  color: @yellow;
+  border-left: 4px solid @yellow;
+  border-radius: 0 12px 12px 0;
+  margin: 6px 2px 6px 0;
+  padding: 4px 6px;
+}
+
+#pulseaudio.muted {
+  color: @subtext0;
+  border-left: 4px solid @subtext0;
+}
+
+/* -----------------------------------------------------------------------------
+* Network
+* -------------------------------------------------------------------------- */
+
+#network {
+  background: @background-primary;
+  color: @green;
+  border-left: 4px solid @green;
+  margin: 6px 2px;
+  padding: 4px 6px;
+  border-radius: 12px;
+}
+
+#network.disconnected {
+  color: @error;
+  border-left: 4px solid @error;
+}
+
+#network.disabled {
+  color: @subtext0;
+  border-left: 4px solid @subtext0;
+}
+
+/* -----------------------------------------------------------------------------
+* Custom modules
+* -------------------------------------------------------------------------- */
+
+#custom-vpn {
+  background: @background-primary;
+  color: @teal;
+  border-left: 4px solid @teal;
+  margin: 6px 2px;
+  padding: 8px 12px;
+  border-radius: 12px;
+}
+
+#custom-vpn.connected {
+  color: @success;
+  border-left: 4px solid @success;
+}
+
+#custom-notification {
+  background: @background-primary;
+  color: @lavender;
+  border-left: 4px solid @lavender;
+  margin: 6px 2px;
+  padding: 8px 12px;
+  border-radius: 12px;
+}
+
+/* -----------------------------------------------------------------------------
+* Tray
+* -------------------------------------------------------------------------- */
 
 #tray {
-  padding-left: 16px;
-  padding-right: 16px;
-  margin-right: 8px;
-  border-radius: 10px;
-  transition: none;
-  color: #ffffff;
-  background: #383c4a;
+  background: @background-secondary;
+  padding: 3px 5px;
+  margin: 6px 8px 6px 2px;
+  border-radius: 12px;
+  border: 1px solid @border-color;
 }
 
-#custom-clipboard {
-  padding-left: 16px;
-  padding-right: 16px;
-  border-radius: 10px;
-  transition: none;
-  color: #ffffff;
-  background: #383c4a;
+#tray > .passive {
+  opacity: 0.7;
 }
 
-@keyframes blink {
-  to {
-    background-color: #ffffff;
-    color: #000000;
-  }
+#tray > .needs-attention {
+  background-color: @error;
+  border-radius: 6px;
+  color: @base;
 }
+
+/* -----------------------------------------------------------------------------
+* Idle inhibitor
+* -------------------------------------------------------------------------- */
+
+#idle_inhibitor {
+  background: @background-primary;
+  color: @yellow;
+  border-left: 4px solid @yellow;
+  margin: 6px 2px;
+  padding: 4px 6px;
+  border-radius: 12px;
+}
+
+#idle_inhibitor.activated {
+  background: @yellow;
+  border-left: 4px solid @background-primary;
+  color: @base;
+}
+
+#mode {
+  background: @warning;
+  color: @base;
+  font-weight: bold;
+  padding: 4px 8px;
+  margin: 6px 8px;
+  border-radius: 12px;
+}
+
+/* -----------------------------------------------------------------------------
+* Hover effects
+* -------------------------------------------------------------------------- */
+
+#clock:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#backlight:hover,
+#network:hover,
+#pulseaudio:hover,
+#custom-launcher:hover,
+#custom-notification:hover,
+#custom-weather:hover,
+#custom-updates:hover,
+#custom-vpn:hover,
+#language:hover,
+#custom-cava:hover {
+  opacity: 0.8;
+}
+

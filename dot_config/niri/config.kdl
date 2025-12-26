@@ -71,11 +71,12 @@ layout {
 }
 
 spawn-sh-at-startup "solaar --window=hide --battery-icons=solaar"
-
-// clipboard
-spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
-
+spawn-at-startup "sunsetr"
+// spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 spawn-sh-at-startup "systemctl --user start hyprpolkitagent"
+spawn-at-startup "waybar"
+spawn-sh-at-startup "clipse -listen"
+spawn-sh-at-startup "swaybg -i ~/Pictures/backgrounds/sunset_moment_by_samuel_one_detcf5d-pre.jpg"
 
 hotkey-overlay {
     skip-at-startup
@@ -116,28 +117,11 @@ window-rule {
     // This app-id regular expression will work for both:
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"zen-browser$"# title="^Picture-in-Picture$"
     open-floating true
 }
 
-// Example: block out two password managers from screen capture.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
 
-    block-out-from "screen-capture"
-
-    // Use this instead if you want them visible on third-party screenshot tools.
-    // block-out-from "screencast"
-}
-
-// Example: enable rounded corners for all windows.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    geometry-corner-radius 12
-    clip-to-geometry true
-}
 
 // make inactive windows semitransparent
 window-rule {
@@ -151,6 +135,12 @@ window-rule {
   open-floating true
 }
 
+// bluetui should float
+window-rule {
+  match app-id="ghostty$" title="^bluetui$"
+  open-floating true
+}
+
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
@@ -161,14 +151,16 @@ binds {
     Mod+F hotkey-overlay-title="Run an application: yazi" { spawn-sh "ghostty -e yazi"; }
     Mod+slash hotkey-overlay-title="Run an application: bitwarden" { spawn-sh "uwsm-app -- bitwarden-desktop"; }
     Mod+N hotkey-overlay-title="Run an application: Neovim obsidian" { spawn-sh "ghostty -e nvim ~/notes"; }
-    Mod+P { spawn-sh "ghostty --title='clipse' -e clipse "; }
+    Mod+P hotkey-overlay-title="Run clipse (clipboard manager)" { spawn-sh "ghostty --title='clipse' -e clipse "; }
+    Alt+B hotkey-overlay-title="Run bluetui" { spawn-sh "ghostty --title='bluetui' -e bluetui"; }
 
     Mod+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
-   XF86AudioLowerVolume  allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "decrement" "3"; }
-    XF86AudioMicMute      allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "micmute"; }
-    XF86AudioMute         allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "mute"; }
-    XF86AudioRaiseVolume  allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "increment" "3"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0 && wp-vol"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1- && wp-vol"; }
+
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && wp-vol"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
     XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
     XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }

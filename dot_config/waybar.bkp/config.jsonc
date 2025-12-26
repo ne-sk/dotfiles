@@ -1,0 +1,90 @@
+// -*- mode: json -*-
+
+{
+	"layer": "bottom",
+	"position": "top",
+
+	"modules-left": [
+		"niri/workspaces",
+	],
+	"modules-center": [
+		"clock#1",
+		"clock#2",
+		"clock#3",
+	],
+	"modules-right": [
+		"tray",
+    "network",
+		"pulseaudio",
+		"memory",
+		"cpu",
+		"battery",
+	],
+
+	"clock#1": {
+		"format": "{:%a}",
+		"tooltip": false
+	},
+	"clock#2": {
+		"format": "{:%H:%M}",
+		"tooltip": false
+	},
+	"clock#3": {
+		"format": "{:%m-%d}",
+		"tooltip": false
+	},
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "{essid} ({signalStrength}%) ",
+    "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+    "format-disconnected": "", //An empty format will hide the module.
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+  },
+	"pulseaudio": {
+		"format": "{icon}  {volume:2}%",
+		"format-bluetooth": "{icon}  {volume}%",
+		"format-muted": "MUTE",
+		"format-icons": {
+			"headphones": "",
+			"default": [
+				"",
+				""
+			]
+		},
+		"scroll-step": 5,
+		"on-click": "pavucontrol"
+	},
+	"memory": {
+		"interval": 5,
+		"format": "Mem {}%",
+    "on-click": "ghostty -e btop"
+	},
+	"cpu": {
+		"interval": 5,
+		"format": "CPU {usage:2}%",
+    "on-click": "ghostty -e btop"
+	},
+	"battery": {
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon}  {capacity}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		]
+	},
+	"tray": {
+		"icon-size": 15,
+    "spacing": 10,
+	}
+}

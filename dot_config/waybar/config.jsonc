@@ -1,134 +1,29 @@
 {
-  // "layer": "top", // Waybar at top layer
-  // "position": "bottom", // Waybar position (top|bottom|left|right)
-  // "height": 30, // Waybar height (to be removed for auto height)
-  "margin": "5 20 0 20",
-  // "width": 1280, // Waybar width
-  // Choose the order of the modules
+  "style": "~/.config/waybar/style.css",
+  
+  "layer": "top",
+  "position": "top",
+  "height": 40,
+  
   "modules-left": [
-    "hyprland/workspaces",
+    "niri/workspaces",
   ],
+  
   "modules-center": [
-    "clock"
+    "memory",
+    "cpu",
+    "temperature"
   ],
+  
   "modules-right": [
+    "idle_inhibitor",
+    "battery",
     "pulseaudio",
     "network",
-    "bluetooth",
-    "battery",
+    "custom/vpn",
+    "clock",
     "tray"
   ],
-  //***************************
-  //*  Modules configuration  *
-  //***************************
-  "hyprland/workspaces": {
-    "on-click": "activate",
-    "format": "{icon}",
-    "format-window-separator": "",
-    "format-icons": {
-      "default": "",
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5",
-      "6": "6",
-      "7": "7",
-      "8": "8",
-      "9": "9",
-      "10": "10",
-      "active": "󱓻"
-    },
-    "persistent-workspaces": {
-      "eDP-1": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
-      "HDMI-A-1": [
-        6,
-        7,
-        8,
-        9,
-        10
-      ]
-    }
-  },
-  "clock": {
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format": "{:%a, %d %b, %I:%M %p}"
-  },
-  "pulseaudio": {
-    // "scroll-step": 1, // %, can be a float
-    "reverse-scrolling": 1,
-    "format": "{volume}% {icon}",
-    "format-bluetooth": "{volume}% {icon} ",
-    "format-bluetooth-muted": " {icon} ",
-    "format-muted": "🔇",
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": [
-        "",
-        "",
-        ""
-      ]
-    },
-    "on-click": "pavucontrol"
-  },
-  "battery": {
-    "states": {
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}% ",
-    "format-alt": "{time} {icon}",
-    "format-icons": [
-      "󰁺",
-      "󰁻",
-      "󰁼",
-      "󰁽",
-      "󰁾",
-      "󰁿",
-      "󰂀",
-      "󰂁",
-      "󰂂",
-      "󰁹"
-    ],
-    "on-update": "$HOME/.config/waybar/scripts/check_battery.sh"
-  },
-  "network": {
-    "format": "{ifname}",
-    "format-wifi": "{signalStrength}% ",
-    "format-ethernet": "{ipaddr}/{cidr} 󰊗",
-    "format-disconnected": "", //An empty format will hide the module.
-    "tooltip-format": "{essid} 󰊗",
-    "tooltip-format-ethernet": "{ifname} ",
-    "tooltip-format-disconnected": "Disconnected",
-    "on-click": "ghostty -e 'nmtui'",
-    "max-length": 50
-  },
-  "network#2": {
-    "format": "{bandwidthDownBytes}",
-    "interval": 3
-  },
-  "bluetooth": {
-    "format": " {num_connections}",
-    "format-disabled": "󰂲",
-    "format-connected": " {num_connections}",
-    "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "rofi-bluetooth"
-  },
-  "tray": {
-    "icon-size": 16,
-    "spacing": 16
-  }
+
+  "include": "~/.config/waybar/modules.jsonc"
 }
