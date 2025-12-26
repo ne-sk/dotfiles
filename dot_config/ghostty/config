@@ -1,0 +1,22 @@
+font-family = "CaskaydiaCove Nerd Font"
+font-size = 9
+font-style = Regular
+
+window-padding-x = 14
+window-padding-y = 0 
+window-padding-color = extend 
+confirm-close-surface = false
+
+resize-overlay = never
+
+gtk-toolbar-style = flat
+
+theme = Gruvbox Material Dark 
+
+cursor-style = block
+cursor-style-blink = false
+cursor-invert-fg-bg = true
+
+mouse-hide-while-typing = true
+
+shell-integration-features = no-cursor, ssh-env
