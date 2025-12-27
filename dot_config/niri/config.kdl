@@ -5,9 +5,6 @@ input {
       numlock
     }
 
-    // Next sections include libinput settings.
-    // Omitting settings disables them, or leaves them at their default values.
-    // All commented-out settings here are examples, not defaults.
     touchpad {
         tap
         dwt
@@ -36,7 +33,7 @@ output "eDP-1" {
 }
 
 layout {
-    gaps 16 
+    gaps 8 
 
     center-focused-column "never"
 
@@ -71,12 +68,12 @@ layout {
 }
 
 spawn-sh-at-startup "solaar --window=hide --battery-icons=solaar"
-spawn-at-startup "sunsetr"
-// spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+// spawn-at-startup "sunsetr"
+spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 spawn-sh-at-startup "systemctl --user start hyprpolkitagent"
-spawn-at-startup "waybar"
-spawn-sh-at-startup "clipse -listen"
-spawn-sh-at-startup "swaybg -i ~/Pictures/backgrounds/sunset_moment_by_samuel_one_detcf5d-pre.jpg"
+// spawn-at-startup "waybar"
+// spawn-sh-at-startup "clipse -listen"
+// spawn-sh-at-startup "swaybg -i ~/Pictures/backgrounds/sunset_moment_by_samuel_one_detcf5d-pre.jpg"
 
 hotkey-overlay {
     skip-at-startup
@@ -121,8 +118,6 @@ window-rule {
     open-floating true
 }
 
-
-
 // make inactive windows semitransparent
 window-rule {
   match is-active=false
@@ -151,8 +146,8 @@ binds {
     Mod+F hotkey-overlay-title="Run an application: yazi" { spawn-sh "ghostty -e yazi"; }
     Mod+slash hotkey-overlay-title="Run an application: bitwarden" { spawn-sh "uwsm-app -- bitwarden-desktop"; }
     Mod+N hotkey-overlay-title="Run an application: Neovim obsidian" { spawn-sh "ghostty -e nvim ~/notes"; }
-    Mod+P hotkey-overlay-title="Run clipse (clipboard manager)" { spawn-sh "ghostty --title='clipse' -e clipse "; }
-    Alt+B hotkey-overlay-title="Run bluetui" { spawn-sh "ghostty --title='bluetui' -e bluetui"; }
+    // Mod+P hotkey-overlay-title="Run clipse (clipboard manager)" { spawn-sh "ghostty --title='clipse' -e clipse "; }
+    // Alt+B hotkey-overlay-title="Run bluetui" { spawn-sh "ghostty --title='bluetui' -e bluetui"; }
 
     Mod+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
@@ -371,14 +366,14 @@ binds {
     Mod+Shift+E { quit; }
     Ctrl+Alt+Delete { quit; }
 
-    // Powers off the monitors. To turn them back on, do any input like
-    // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 }
 
 // environment variables
 environment {
   QT_QPA_PLATFORM "wayland"
+  QT_QPA_PLATFORMTHEME "qt6ct"
+  QT_QPA_PLATFORMTHEME_QT6 "qt6ct"
   XDG_MENU_PREFIX "arch-"
   ELECTRON_OZONE_PLATFORM_HINT "auto"
 }
