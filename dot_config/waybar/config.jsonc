@@ -1,29 +1,23 @@
 {
-  "style": "~/.config/waybar/style.css",
-  
+  "reload_style_on_change": true,
+  "toggle": true,
   "layer": "top",
-  "position": "top",
-  "height": 40,
-  
-  "modules-left": [
-    "niri/workspaces",
-  ],
-  
-  "modules-center": [
-    "memory",
-    "cpu",
-    "temperature"
-  ],
-  
+  "position": "left",
+  "margin-top": 0,
+  "margin-bottom": 0,
+  "margin-left": 0,
+  "margin-right": 0,
+  "spacing": 0,
+  "include": ["~/.config/waybar/modules.json"],
+  "modules-left": ["custom/cachy", "clock", ],
+  "modules-center": ["mpris", "niri/workspaces", "privacy"],
   "modules-right": [
-    "idle_inhibitor",
-    "battery",
-    "pulseaudio",
+    "group/extras",
     "network",
-    "custom/vpn",
-    "clock",
-    "tray"
-  ],
-
-  "include": "~/.config/waybar/modules.jsonc"
+    "bluetooth",
+    "pulseaudio#microphone",
+    "group/audio",
+    "group/brightness",
+    "battery"
+  ]
 }
