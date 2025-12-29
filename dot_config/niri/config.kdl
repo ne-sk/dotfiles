@@ -116,19 +116,17 @@ window-rule {
     default-column-width {}
 }
 
-// Open the Firefox picture-in-picture player as floating by default.
-window-rule {
-    // This app-id regular expression will work for both:
-    // - host Firefox (app-id is "firefox")
-    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id=r#"zen-browser$"# title="^Picture-in-Picture$"
-    open-floating true
-}
-
 // make inactive windows semitransparent
 window-rule {
   match is-active=false
   opacity 0.92
+}
+
+// Open the zen picture-in-picture player as floating by default.
+window-rule {
+    // - host zen (app-id is "zen")
+    match app-id=r#"zen$"# title="^Picture-in-Picture$"
+    open-floating true
 }
 
 // clipse should float
