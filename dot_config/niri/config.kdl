@@ -32,6 +32,12 @@ output "eDP-1" {
     transform "normal"
 }
 
+output "DP-4" {
+  mode "3840x2160@60.000"
+  scale 1.5
+  transform "normal"
+}
+
 layout {
     gaps 8 
 
@@ -71,6 +77,7 @@ spawn-sh-at-startup "solaar --window=hide --battery-icons=solaar"
 // spawn-at-startup "sunsetr"
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 spawn-sh-at-startup "systemctl --user start hyprpolkitagent"
+spawn-at-startup "ticktick"
 // spawn-at-startup "waybar"
 // spawn-sh-at-startup "clipse -listen"
 // spawn-sh-at-startup "swaybg -i ~/Pictures/backgrounds/sunset_moment_by_samuel_one_detcf5d-pre.jpg"
@@ -136,25 +143,62 @@ window-rule {
   open-floating true
 }
 
+// window rules below copied from dms
+window-rule {
+    match app-id=r#"^org\.gnome\."#
+    draw-border-with-background false
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+window-rule {
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    match app-id="Alacritty"
+    match app-id="zen"
+    match app-id="com.mitchellh.ghostty"
+    match app-id="kitty"
+    match app-id="foot"
+    draw-border-with-background false
+}
+
+window-rule {
+    match is-active=false
+    opacity 0.9
+}
+
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+// Open DMS windows as floating by default
+window-rule {
+    match app-id=r#"org.quickshell$"#
+    open-floating true
+}
+
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
-    Mod+Space hotkey-overlay-title="Run an Application: rofi" { spawn-sh "rofi -show combi"; }
-    Mod+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
-    Mod+B hotkey-overlay-title="Run an application: zen-browser" { spawn "zen-browser"; }
-    Mod+F hotkey-overlay-title="Run an application: yazi" { spawn-sh "ghostty -e yazi"; }
-    Mod+slash hotkey-overlay-title="Run an application: bitwarden" { spawn-sh "uwsm-app -- bitwarden-desktop"; }
-    Mod+N hotkey-overlay-title="Run an application: Neovim obsidian" { spawn-sh "ghostty -e nvim ~/notes"; }
-    // Mod+P hotkey-overlay-title="Run clipse (clipboard manager)" { spawn-sh "ghostty --title='clipse' -e clipse "; }
-    // Alt+B hotkey-overlay-title="Run bluetui" { spawn-sh "ghostty --title='bluetui' -e bluetui"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
+    Mod+Space hotkey-overlay-title="Application Launcher" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+    Mod+P hotkey-overlay-title="Clipboard manager" { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
+    Mod+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "dms" "ipc" "call" "lock" "lock"; }
+    Mod+B hotkey-overlay-title="Run zen-browser" { spawn "zen-browser"; }
+    Mod+F hotkey-overlay-title="Run yazi" { spawn-sh "foot -e yazi"; }
+    Mod+N hotkey-overlay-title="Run an Neovim obsidian" { spawn-sh "foot -e nvim ~/notes"; }
 
     Mod+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0 && wp-vol"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1- && wp-vol"; }
-
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && wp-vol"; }
+    XF86AudioRaiseVolume allow-when-locked=true {
+        spawn "dms" "ipc" "call" "audio" "increment" "3";
+    }
+    XF86AudioLowerVolume allow-when-locked=true {
+        spawn "dms" "ipc" "call" "audio" "decrement" "3";
+    }
+    XF86AudioMute allow-when-locked=true {
+        spawn "dms" "ipc" "call" "audio" "mute";
+    }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
     XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
@@ -162,11 +206,12 @@ binds {
     XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
 
-    // Example brightness key mappings for brightnessctl.
-    // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
-    // but you need to manually put each argument in separate "" quotes.
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86MonBrightnessUp allow-when-locked=true {
+       spawn "dms" "ipc" "call" "brightness" "increment" "5" "";
+    }
+    XF86MonBrightnessDown allow-when-locked=true {
+       spawn "dms" "ipc" "call" "brightness" "decrement" "5" "";
+    }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
@@ -384,3 +429,8 @@ cursor {
   hide-when-typing
   hide-after-inactive-ms 10000
 }
+
+include "dms/colors.kdl"
+include "dms/layout.kdl"
+include "dms/alttab.kdl"
+include "dms/wpblur.kdl"

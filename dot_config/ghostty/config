@@ -20,3 +20,5 @@ cursor-invert-fg-bg = true
 mouse-hide-while-typing = true
 
 shell-integration-features = no-cursor, ssh-env
+
+config-file = /home/elvis/.config/ghostty/config-dankcolors
