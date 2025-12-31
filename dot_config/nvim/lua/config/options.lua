@@ -5,3 +5,9 @@
 vim.o.wrap = true
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,options,tabpages,winsize,terminal"
 vim.o.breakindent = true
+
+vim.filetype.add({
+  extension = {
+    ["http"] = "http",
+  },
+})
