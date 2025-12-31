@@ -34,7 +34,7 @@ output "eDP-1" {
 
 output "DP-4" {
   mode "3840x2160@60.000"
-  scale 1.5
+  scale 1.3337
   transform "normal"
 }
 
@@ -184,7 +184,7 @@ binds {
     Mod+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "dms" "ipc" "call" "lock" "lock"; }
     Mod+B hotkey-overlay-title="Run zen-browser" { spawn "zen-browser"; }
     Mod+F hotkey-overlay-title="Run yazi" { spawn-sh "foot -e yazi"; }
-    Mod+N hotkey-overlay-title="Run an Neovim obsidian" { spawn-sh "foot -e nvim ~/notes"; }
+    Mod+N hotkey-overlay-title="Run an Neovim obsidian" { spawn-sh "ghostty -e nvim ~/notes"; }
 
     Mod+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
