@@ -74,13 +74,12 @@ layout {
 }
 
 spawn-sh-at-startup "solaar --window=hide --battery-icons=solaar"
-// spawn-at-startup "sunsetr"
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 spawn-sh-at-startup "systemctl --user start hyprpolkitagent"
+spawn-at-startup "mega-sync"
+spawn-at-startup "ghostty" "--title=neo-obsidian" "-e" "nvim" "/home/elvis/notes"
+spawn-at-startup "obsidian"
 spawn-at-startup "ticktick"
-// spawn-at-startup "waybar"
-// spawn-sh-at-startup "clipse -listen"
-// spawn-sh-at-startup "swaybg -i ~/Pictures/backgrounds/sunset_moment_by_samuel_one_detcf5d-pre.jpg"
 
 hotkey-overlay {
     skip-at-startup
@@ -100,20 +99,25 @@ overview {
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
-animations {
-    // Uncomment to turn off all animations.
-    // off
+// niri-scratchpad
+workspace "web"
+workspace "dev"
+workspace "chat"
+workspace "scratch" // has to be last
 
-    // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
+window-rule {
+  match app-id="obsidian"
+  match title="neo-obsidian"
+  open-on-workspace "scratch"
+  open-floating true
+  default-column-width { fixed 1380; }
+  default-window-height { fixed 900; }
 }
 
 window-rule {
-    // This regular expression is intentionally made as specific as possible,
-    // since this is the default config, and we want no false positives.
-    // You can get away with just app-id="wezterm" if you want.
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
+    match app-id=r#"^org.telegram.desktop$"#
+    open-on-workspace "chat"
+    open-maximized true
 }
 
 // make inactive windows semitransparent
@@ -127,18 +131,6 @@ window-rule {
     // - host zen (app-id is "zen")
     match app-id=r#"zen$"# title="^Picture-in-Picture$"
     open-floating true
-}
-
-// clipse should float
-window-rule {
-  match app-id="ghostty$" title="^clipse$"
-  open-floating true
-}
-
-// bluetui should float
-window-rule {
-  match app-id="ghostty$" title="^bluetui$"
-  open-floating true
 }
 
 // window rules below copied from dms
@@ -184,7 +176,9 @@ binds {
     Mod+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "dms" "ipc" "call" "lock" "lock"; }
     Mod+B hotkey-overlay-title="Run zen-browser" { spawn "zen-browser"; }
     Mod+F hotkey-overlay-title="Run yazi" { spawn-sh "foot -e yazi"; }
-    Mod+N hotkey-overlay-title="Run an Neovim obsidian" { spawn-sh "ghostty -e nvim ~/notes"; }
+
+    Mod+Ctrl+O { spawn-sh "ns.py -id obsidian -s obsidian"; }
+    Mod+Ctrl+N hotkey-overlay-title="Run neovim in obsidian vault" { spawn-sh "ns.py -t neo-obsidian -s 'ghostty --title=neo-obsidian -e nvim /home/elvis/notes'"; }
 
     Mod+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
@@ -315,24 +309,28 @@ binds {
     Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
     Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
 
-    Mod+1 { focus-workspace 1; }
-    Mod+2 { focus-workspace 2; }
-    Mod+3 { focus-workspace 3; }
-    Mod+4 { focus-workspace 4; }
-    Mod+5 { focus-workspace 5; }
-    Mod+6 { focus-workspace 6; }
-    Mod+7 { focus-workspace 7; }
-    Mod+8 { focus-workspace 8; }
-    Mod+9 { focus-workspace 9; }
-    Mod+Ctrl+1 { move-column-to-workspace 1; }
-    Mod+Ctrl+2 { move-column-to-workspace 2; }
-    Mod+Ctrl+3 { move-column-to-workspace 3; }
-    Mod+Ctrl+4 { move-column-to-workspace 4; }
-    Mod+Ctrl+5 { move-column-to-workspace 5; }
-    Mod+Ctrl+6 { move-column-to-workspace 6; }
-    Mod+Ctrl+7 { move-column-to-workspace 7; }
-    Mod+Ctrl+8 { move-column-to-workspace 8; }
-    Mod+Ctrl+9 { move-column-to-workspace 9; }
+    Mod+1 { focus-workspace "web"; }
+    Mod+2 { focus-workspace "dev"; }
+    Mod+3 { focus-workspace "chat"; }
+    Mod+4 { focus-workspace "scratch"; }
+    Mod+Shift+1 { move-window-to-workspace "web"; }
+    Mod+Shift+2 { move-window-to-workspace "dev"; }
+    Mod+Shift+3 { move-window-to-workspace "chat"; }
+    Mod+Shift+4 { move-window-to-workspace "scratch"; }
+    // Mod+5 { focus-workspace 5; }
+    // Mod+6 { focus-workspace 6; }
+    // Mod+7 { focus-workspace 7; }
+    // Mod+8 { focus-workspace 8; }
+    // Mod+9 { focus-workspace 9; }
+    // Mod+Ctrl+1 { move-column-to-workspace 1; }
+    // Mod+Ctrl+2 { move-column-to-workspace 2; }
+    // Mod+Ctrl+3 { move-column-to-workspace 3; }
+    // Mod+Ctrl+4 { move-column-to-workspace 4; }
+    // Mod+Ctrl+5 { move-column-to-workspace 5; }
+    // Mod+Ctrl+6 { move-column-to-workspace 6; }
+    // Mod+Ctrl+7 { move-column-to-workspace 7; }
+    // Mod+Ctrl+8 { move-column-to-workspace 8; }
+    // Mod+Ctrl+9 { move-column-to-workspace 9; }
 
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
