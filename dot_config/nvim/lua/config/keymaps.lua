@@ -20,3 +20,7 @@ map("n", "<C-Up>", "<C-w>k", opts)
 -- make s-left and s-right behave the same as H and L
 map("n", "<S-Left>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
 map("n", "<S-Right>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+
+-- keep cursor centered
+map("n", "<C-u>", "<C-u>zz", opts)
+map("n", "<C-d>", "<C-d>zz", opts)
