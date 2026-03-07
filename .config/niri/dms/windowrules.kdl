@@ -1,0 +1,14 @@
+// DMS Window Rules - Managed by DankMaterialShell
+// Do not edit manually - changes may be overwritten
+
+// @id=wr_1772769477638952449 @name=Bitwarden
+window-rule {
+    match app-id="^Bitwarden$"
+    open-floating true
+}
+
+// @id=wr_1772769514340808280 @name=org.quickshell
+window-rule {
+    match app-id="^org.quickshell$"
+    open-floating true
+}

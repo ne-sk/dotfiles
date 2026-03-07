@@ -1,0 +1,28 @@
+include "dms/colors.kdl"
+
+include "outputs.kdl"
+include "input.kdl"
+include "autostart.kdl"
+include "env.kdl"
+include "layout.kdl"
+include "animations.kdl"
+include "windowrules.kdl"
+include "binds.kdl"
+include "workspaces.kdl"
+include "cursor.kdl"
+
+debug {
+    honor-xdg-activation-with-invalid-serial
+}
+
+config-notification {
+  disable-failed
+}
+
+prefer-no-csd
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"

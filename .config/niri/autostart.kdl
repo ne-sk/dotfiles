@@ -1,0 +1,2 @@
+spawn-at-startup "solaar" "--window=hide" "--battery-icons=solaar"
+spawn-at-startup "mega-sync"

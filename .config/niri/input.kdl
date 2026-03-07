@@ -1,0 +1,18 @@
+input {
+    keyboard {
+        xkb {
+          layout "us, graphite_en_ansi"
+        }
+        numlock
+        repeat-rate 35
+        repeat-delay 200
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+        accel-speed 0.2
+        accel-profile "flat"
+        scroll-method "two-finger"
+    }
+}
