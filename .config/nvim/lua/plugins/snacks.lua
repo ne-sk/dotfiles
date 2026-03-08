@@ -6,7 +6,7 @@ return
   opts = {
     image = {},
     explorer = {
-      replace_netrw = false,
+      replace_netrw = true,
     },
   },
 }
