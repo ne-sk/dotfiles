@@ -2,10 +2,12 @@
 window-rule {
   match app-id="obsidian"
   match title="neo-obsidian"
-  open-on-workspace "scratch"
-  open-floating true
+  match app-id="Bitwarden"
   default-column-width { fixed 1200; }
   default-window-height { fixed 800; }
+  open-on-workspace "scratch"
+  open-floating true
+  open-focused false
 }
 
 // floaters
@@ -16,13 +18,6 @@ window-rule {
   match title="^wiremix$"
   match app-id=r#"firefox$"# title="^Picture-in-Picture$"
   open-floating true
-}
-
-window-rule {
-  match title="^Bitwarden$"
-  open-floating true
-  default-column-width { fixed 1200; }
-  default-window-height { fixed 800; }
 }
 
 // launch chat apps in chat workspace

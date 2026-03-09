@@ -9,6 +9,7 @@ binds {
     Mod+F hotkey-overlay-title="Run yazi" { spawn-sh "foot -e yazi"; }
 
     Mod+Ctrl+O { spawn-sh "ns.py -id obsidian -s obsidian"; }
+    Mod+Slash { spawn "ns.py" "-id" "Bitwarden" "-s" "bitwarden-desktop"; }
 
     Mod+Alt+L hotkey-overlay-title="Lock Screen" { spawn "dms" "ipc" "call" "lock" "lock"; }
     Mod+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
