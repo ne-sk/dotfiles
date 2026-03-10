@@ -4,7 +4,7 @@
 
 local map = vim.keymap.set
 
--- map("i", "jk", "<ESC>")
+map("i", "jk", "<ESC>")
 
 map("n", "<C-a>", "ggVG", { desc = "Select all" })
 
