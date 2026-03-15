@@ -18,3 +18,5 @@ vim.filetype.add({
 })
 
 vim.g.markdown_recommended_style = 0
+
+vim.g.vimtex_view_method = "zathura_simple"
