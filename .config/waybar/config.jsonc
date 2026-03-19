@@ -1,39 +1,62 @@
 // -*- mode: jsonc -*-
 {
-  "layer": "top",
-  "position": "left",
-  //"height"
-  "margin-top": 4,
-  "margin-bottom": 4,
-  "margin-left": 4,
-  "width": 40,
+  "layer": "top", // Waybar at top layer
+  "position": "bottom", // Waybar position (top|bottom|left|right)
   "modules-left": [
     "group/power",
     "custom/playpause",
-    "niri/workspaces"
+    "niri/workspaces",
   ],
   "modules-center": [
     "niri/window"
   ],
   "modules-right": [
+    "tray",
     "network",
     "group/apps",
     "group/stats",
     "clock"
   ],
   "clock": {
-    // "timezone": "America/New_York",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:%d\n%m\n%y}",
-    "format": "{:%H\n%M}",
-    "interval": 60
+    "format-alt": "{:%Y-%m-%d}",
+    "format": "{:%H:%M}",
+    "interval": 1
+  },
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon}",
+    "format-full": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    "tooltip-format": "{power} W, {timeTo}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "network": {
+    "format-wifi": "  ",
+    "format-ethernet": "{ipaddr}/{cidr} ",
+    "tooltip-format": "{essid}: {ipaddr}",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "Disconnected ⚠",
+    "on-click": "foot --title impala -e impala"
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
-    "format": "{volume}\n{icon}",
+    "format": "{volume}% {icon}",
     "format-bluetooth": "{volume}% {icon} {format_source}",
     "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": "MUT\n󰝟",
+    "format-muted": "MUT 󰝟",
     "format-source": "{volume}% ",
     "format-source-muted": "",
     "format-icons": {
@@ -50,146 +73,31 @@
       ]
     },
     "on-click": "pactl set-sink-mute 0 toggle",
-    "tooltip": false,
-    "justify": "center",
-    "reverse-scrolling": true
-  },
-  "pulseaudio/slider": {
-    "min": 0,
-    "max": 100,
-    "orientation": "vertical"
-  },
-  "group/audio": {
-    "modules": [
-      "pulseaudio",
-      "pulseaudio/slider"
-    ],
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 500,
-      "transition-left-to-right": true
-    }
-  },
-  "backlight": {
-    "format": "{percent}\n{icon}",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ],
-    "tooltip": false,
-    "justify": "center",
-    "reverse-scrolling": true
-  },
-  "backlight/slider": {
-    "min": 3,
-    "max": 100,
-    "orientation": "vertical",
-  },
-  "group/brightness": {
-    "modules": [
-      "backlight",
-      "backlight/slider"
-    ],
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 500,
-      "transition-left-to-right": true
-    }
-  },
-  "battery": {
-    "states": {
-      // "good": 95,
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{capacity}\n{icon}",
-    "format-full": "{capacity}\n{icon}",
-    "format-charging": "{capacity}\n",
-    "format-plugged": "{capacity}\n",
-    //"format-alt": "{time} {icon}",
-    "tooltip-format": "{power} W, {timeTo}",
-    // "format-good": "", // An empty format will hide the module
-    // "format-full": "",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ],
-    "justify": "center"
-  },
-  "group/stats": {
-    "modules": [
-      "battery",
-      "group/audio",
-      "group/brightness",
-    ],
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 750,
-      "transition-left-to-right": false
-    }
-  },
-  "niri/window": {
-    "tooltip": false,
-    "format": "{}",
-    "rotate": 270,
-    "rewrite": {
-      "^null$": "Desktop"
-    }
-  },
-  "custom/appmenu": {
-    "format": "󰀻",
-    "on-click": "niri msg action toggle-overview",
     "tooltip": false
   },
-  "wlr/taskbar": {
+  "custom/poweroff": {
+    "format": "⏻",
+    "on-click": "exec ${HOME}/.config/waybar/scripts/powermenu",
+    "tooltip-format": "Power Menu",
+    "tooltip": true
+  },
+  "custom/power": {
+    "format": "⏻ ",
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "~/.config/waybar/power_menu.xml",
+    "menu-actions": {
+      "shutdown": "shutdown",
+      "reboot": "reboot",
+      "suspend": "systemctl suspend",
+      "hibernate": "systemctl hibernate",
+    },
+  },
+  "idle_inhibitor": {
     "format": "{icon}",
-    "on-click": "activate",
-    "on-click-right": "close"
-  },
-  "group/apps": {
-    "modules": [
-      "custom/appmenu",
-      "wlr/taskbar"
-    ],
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 500,
-      "transition-left-to-right": false
-    }
-  },
-  "network": {
-    // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": " ",
-    "format-ethernet": "{ipaddr}/{cidr} ",
-    //"tooltip-format": "{ifname} via {gwaddr} ",
-    "tooltip-format": "{essid}: {ipaddr}",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}: {essid}",
-    "rotate": 270
-  },
-  "group/power": {
-    "modules": [
-      "custom/powerbutton",
-      "custom/reboot",
-      "custom/suspend",
-      "custom/lock",
-      "custom/idlekiller",
-      "user",
-    ],
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 500
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
     }
   },
   "custom/powerbutton": {
@@ -217,14 +125,53 @@
     "on-click": "pkill hypridle || hypridle",
     "tooltip-format": "Inhibit Idle"
   },
-  "user": {
-    "format": "{work_H}:{work_M}:{work_S} ↑",
-    "interval": 60,
-    "rotate": 270,
+  "group/power": {
+    "modules": [
+      "custom/powerbutton",
+      "custom/reboot",
+      "custom/suspend",
+      "custom/lock",
+      "custom/idlekiller"
+    ],
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500
+    }
+  },
+  "group/stats": {
+    "modules": [
+      "battery",
+      "group/audio"
+    ],
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 750,
+      "transition-left-to-right": false
+    }
+  },
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
+  },
+  "group/audio": {
+    "modules": [
+      "pulseaudio",
+      "pulseaudio/slider"
+    ],
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": true
+    }
+  },
+  "niri/window": {
+    "tooltip": false,
+    "format": "{title}"
   },
   "custom/playpause": {
     "format": "󰐎",
     "on-click": "playerctl play-pause",
     "tooltip": false
-  },
+  }
 }
