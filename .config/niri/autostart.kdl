@@ -1,2 +1,4 @@
 spawn-at-startup "solaar" "--window=hide" "--battery-icons=solaar"
 spawn-at-startup "mega-sync"
+spawn-at-startup "waybar"
+spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/elvis/Pictures/backgrounds/Wallpaper-anime-girl-BW.png"

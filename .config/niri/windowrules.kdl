@@ -1,8 +1,9 @@
-// launch obsidian and nvim as floating in scratch workspace
+// scratchpad applications
 window-rule {
   match app-id="obsidian"
   match title="neo-obsidian"
   match app-id="Bitwarden"
+  match app-id="btop"
   default-column-width { fixed 1200; }
   default-window-height { fixed 800; }
   open-on-workspace "scratch"

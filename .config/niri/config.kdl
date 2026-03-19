@@ -1,5 +1,4 @@
-include "dms/colors.kdl"
-
+include "colors.kdl"
 include "outputs.kdl"
 include "input.kdl"
 include "autostart.kdl"

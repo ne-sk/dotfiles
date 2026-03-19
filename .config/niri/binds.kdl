@@ -2,11 +2,12 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
-    Mod+Space hotkey-overlay-title="Application Launcher" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+    Mod+Space hotkey-overlay-title="Application Launcher" { spawn "fuzzel" ; }
 
-    Mod+P hotkey-overlay-title="Clipboard Manager" { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
+    Mod+P hotkey-overlay-title="Clipboard Manager" { spawn ""; }
     Mod+B hotkey-overlay-title="Run firefox" { spawn "firefox"; }
     Mod+F hotkey-overlay-title="Run yazi" { spawn-sh "foot -e yazi"; }
+    Mod+S hotkey-overlay-title="Run btop" { spawn "ns.py" "-id" "btop" "-s" "foot --app-id btop -e sh -c btop"; }
 
     Mod+Ctrl+O { spawn-sh "ns.py -id obsidian -s obsidian"; }
     Mod+Slash { spawn "ns.py" "-id" "Bitwarden" "-s" "bitwarden-desktop"; }
