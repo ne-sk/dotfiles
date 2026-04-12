@@ -1,3 +1,18 @@
+// window-rule {
+//   match title="^*$"
+//   open-floating true
+// }
+
+// always float
+window-rule {
+  match title="^clipse$"
+  match title="^impala$"
+  match title="^bluetui$"
+  match title="^wiremix$"
+  match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+  open-floating true
+}
+
 // scratchpad applications
 window-rule {
   match app-id="obsidian"
@@ -6,31 +21,37 @@ window-rule {
   match app-id="btop"
   default-column-width { fixed 1200; }
   default-window-height { fixed 800; }
-  open-on-workspace "scratch"
+  open-on-workspace "Scratchpad"
   open-floating true
   open-focused false
 }
 
-// floaters
+// chat applications
 window-rule {
-  match app-id="foot$" title="^clipse$"
-  match title="^impala$"
-  match title="^bluetui$"
-  match title="^wiremix$"
-  match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-  open-floating true
+  match app-id="telegram"
+  match app-id="Slack"
+  match app-id="betterbird"
+  open-on-workspace "Chat"
+  open-focused false
 }
 
-// launch chat apps in chat workspace
+// work applications
 window-rule {
-    match app-id=r#"^org.telegram.desktop$"#
-    match app-id=r#"^Slack$"#
-    match app-id=r#"^betterbird$"#
-    match app-id=r#"^vesktop$"#
-    open-on-workspace "chat"
-    open-maximized false
+  match app-id="zen"
+  open-on-workspace "Work"
 }
 
+// Browser
+window-rule {
+  match app-id="firefox"
+  open-on-workspace "Browser"
+}
+
+// file manager
+window-rule {
+  match title="yazi"
+  open-on-workspace "System Tools and Misc"
+}
 // window rules below copied from dms
 window-rule {
     match app-id=r#"^org\.gnome\."#
@@ -56,9 +77,10 @@ window-rule {
 }
 
 window-rule {
-    geometry-corner-radius 12
+    // geometry-corner-radius 12
     clip-to-geometry true
 }
+
 recent-windows {
     binds {
         Alt+Tab         { next-window scope="output"; }

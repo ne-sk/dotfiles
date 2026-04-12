@@ -1,5 +1,8 @@
-// niri-scratchpad
-workspace "home"
-workspace "work"
-workspace "chat"
-workspace "scratch" // has to be last
+workspace "Terminal"
+workspace "Browser"
+workspace "Development/Coding"
+workspace "Work"
+workspace "Chat"
+workspace "Office Tools"
+workspace "System Tools and Misc"
+workspace "Scratchpad" // niri-scratchpad

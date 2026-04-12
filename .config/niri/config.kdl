@@ -14,10 +14,6 @@ debug {
     honor-xdg-activation-with-invalid-serial
 }
 
-config-notification {
-  disable-failed
-}
-
 prefer-no-csd
 
 hotkey-overlay {

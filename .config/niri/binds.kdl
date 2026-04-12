@@ -1,24 +1,27 @@
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
-    Mod+Space hotkey-overlay-title="Application Launcher" { spawn "fuzzel" ; }
-    Mod+P hotkey-overlay-title="Clipboard Manager" { spawn "foot" "--title" "clipse" "-e" "clipse"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "footclient"; }
+
+    Mod+Space hotkey-overlay-title="Application Launcher" { spawn-sh "rofi -show drun -show-icons -theme-str 'window { width: 22% ; location: northwest; margin: 10px 0 0 10px; } listview { lines: 20; }'"; }
+    Mod+P hotkey-overlay-title="Clipboard Manager" { spawn "ghostty" "--title=clipse" "-e" "clipse"; }
 
     Mod+B hotkey-overlay-title="Run firefox" { spawn "firefox"; }
+    Mod+Ctrl+B hotkey-overlay-title="Run zen-browser" { spawn "zen-browser"; }
 
-    Mod+F hotkey-overlay-title="Run yazi" { spawn-sh "foot -e yazi"; }
+    Mod+F hotkey-overlay-title="Run yazi" { spawn "footclient" "--title=yazi" "-e" "yazi"; }
 
-    Mod+S hotkey-overlay-title="Run btop" { spawn "ns.py" "-id" "btop" "-s" "foot --app-id btop -e sh -c btop"; }
+    Mod+S hotkey-overlay-title="Run btop" { spawn "ns.py" "-id" "btop" "-s" "footclient --app-id btop -e sh -c btop"; }
     Mod+Ctrl+O { spawn-sh "ns.py -id obsidian -s obsidian"; }
     Mod+Slash { spawn "ns.py" "-id" "Bitwarden" "-s" "bitwarden-desktop"; }
 
-    Mod+Alt+L hotkey-overlay-title="Lock Screen" { spawn "hyprlock" "--grace" "30"; }
+    Mod+Alt+L hotkey-overlay-title="Lock Screen" { spawn "swaylock" "-i" "~/Pictures/backgrounds/lock.png"; }
     Mod+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+    Mod+Alt+W hotkey-overlay-title="Choose wallpaper" {spawn "~/.config/custom_scripts/chooseBackgroundImage.sh"; }
 
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.3 && notify-send -t 1000 'Volume Increased'"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05- && notify-send -t 1000 'Volume Decreased'"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && notify-send -t 1000 'Mute Toggled'"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
     XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
@@ -75,6 +78,7 @@ binds {
     Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
     Mod+Page_Up        { focus-workspace-up; }
+    Mod+Page_Down      { focus-workspace-down; }
     Mod+U              { focus-workspace-down; }
     Mod+I              { focus-workspace-up; }
     Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
@@ -102,16 +106,23 @@ binds {
     Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
     Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
 
-    Mod+1 { focus-workspace "home"; }
-    Mod+2 { focus-workspace "work"; }
-    Mod+3 { focus-workspace "chat"; }
-    Mod+4 { focus-workspace "scratch"; }
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
     Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
 
-    Mod+Shift+1 { move-window-to-workspace "home"; }
-    Mod+Shift+2 { move-window-to-workspace "work"; }
-    Mod+Shift+3 { move-window-to-workspace "chat"; }
-    Mod+Shift+4 { move-window-to-workspace "scratch"; }
+    Mod+Shift+1 { move-window-to-workspace 1; }
+    Mod+Shift+2 { move-window-to-workspace 2; }
+    Mod+Shift+3 { move-window-to-workspace 3; }
+    Mod+Shift+4 { move-window-to-workspace 4; }
+    Mod+Shift+5 { move-window-to-workspace 5; }
+    Mod+Shift+6 { move-window-to-workspace 6; }
+    Mod+Shift+7 { move-window-to-workspace 7; }
+    Mod+Shift+8 { move-window-to-workspace 8; }
 
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
@@ -134,8 +145,8 @@ binds {
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
 
-    Mod+Shift+Minus { set-window-height "-10%"; }
-    Mod+Shift+Equal { set-window-height "+10%"; }
+    Mod+Ctrl+Minus { set-window-height "-10%"; }
+    Mod+Ctrl+Equal { set-window-height "+10%"; }
 
     Mod+V       { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }

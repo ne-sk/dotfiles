@@ -17,4 +17,5 @@ function y
     rm -f -- "$tmp"
 end
 
+alias mountdrive="sudo mount -t auto -o rw,umask=000,uid=$(id -u),gid=$(id -g)"
 # COMPLETE=fish tms | source
