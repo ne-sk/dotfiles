@@ -9,10 +9,10 @@ binds {
     Mod+B hotkey-overlay-title="Run firefox" { spawn "firefox"; }
     Mod+Ctrl+B hotkey-overlay-title="Run zen-browser" { spawn "zen-browser"; }
 
-    Mod+F hotkey-overlay-title="Run yazi" { spawn "footclient" "--title=yazi" "-e" "yazi"; }
-
+    Mod+F hotkey-overlay-title="Run yazi" { spawn "ns.py" "-id" "yazi" "-s" "footclient --app-id=yazi -e yazi"; }
     Mod+S hotkey-overlay-title="Run btop" { spawn "ns.py" "-id" "btop" "-s" "footclient --app-id btop -e sh -c btop"; }
     Mod+Ctrl+O { spawn-sh "ns.py -id obsidian -s obsidian"; }
+    Mod+Ctrl+N { spawn "ns.py" "-id" "neo.obsidian.ghostty" "-s" "ghostty --class=neo.obsidian.ghostty --working-directory=~/Documents/obsidian-vault/ -e nvim ."; }
     Mod+Slash { spawn "ns.py" "-id" "Bitwarden" "-s" "bitwarden-desktop"; }
 
     Mod+Alt+L hotkey-overlay-title="Lock Screen" { spawn "swaylock" "-i" "~/Pictures/backgrounds/lock.png"; }

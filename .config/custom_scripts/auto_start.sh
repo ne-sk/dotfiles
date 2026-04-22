@@ -6,5 +6,5 @@ run_once() {
   fi
 }
 
-run_once "$HOME/.config/custom_scripts/setBackground.sh"
+# run_once "$HOME/.config/custom_scripts/setBackground.sh"
 run_once "$HOME/.config/custom_scripts/batteryWarning.sh"

@@ -59,6 +59,7 @@ window#waybar {
 #battery.critical,
 #battery.warning,
 #network,
+#power-profiles-daemon,
 #clock {
   padding-right: 6pt;
 }
@@ -125,6 +126,7 @@ window#waybar {
 
 #power-profiles-daemon {
   border: 2pt solid @orange;
+  padding-left: 6pt;
 }
 
 #bluetooth {
@@ -158,6 +160,10 @@ window#waybar {
 
 #network {
   border: 2pt solid @pink;
+}
+
+#power-profiles-daemon {
+  border: 2pt solid @orange;
 }
 
 #taskbar button.active {

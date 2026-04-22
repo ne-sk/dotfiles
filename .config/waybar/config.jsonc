@@ -1,181 +1,170 @@
-[
-  {
-    "layer": "top",
-    "height": 20,
-    "spacing": 4,
-    "margin-top": 5,
-    "margin-left": 5,
-    "margin-right": 5,
-    "modules-left": [
-      "custom/rofi",
-      "niri/language",
-      "niri/workspaces",
-      "niri/window",
-      "tray"
-    ],
-    "modules-center": [
-      "clock"
-    ],
-    "modules-right": [
-      "network",
-      "power-profiles-daemon",
-      "bluetooth",
-      "pulseaudio",
-      "battery"
-    ],
-    "custom/rofi": {
-      "format": "<span></span>",
-      "on-click": "rofi -show drun -disable-history -show-icons -theme-str 'window { width: 22% ; location: northwest; margin: 10px 0 0 10px; } listview { lines: 20; }'",
-      "on-click-right": "~/.config/custom_scripts/power.sh",
-      "escape": true,
-      "tooltip": false
-    },
-    "niri/language": {
-      "on-click": "niri msg action switch-layout next",
-      "format-en": "",
-      "format-Graphite": "󰇈"
-    },
-    // Modules configuration
-    "niri/workspaces": {
-      "disable-scroll": true,
-      "active-only": false,
-      "all-outputs": true,
-      "warp-on-scroll": false,
-      "format": "{icon}",
-      "format-icons": {
-        "1": "<span>󰧨</span>",
-        "2": "<span>󰈹</span>",
-        "3": "<span></span>",
-        "4": "<span></span>",
-        "5": "<span></span>",
-        "6": "<span>󰭛</span>",
-        "7": "<span>󱓷</span>",
-        "8": "<span>󰚀</span>"
-      }
-    },
-    "niri/window": {
-      "format": "<span color='#202020' bgcolor='#d3869b' > 󰣆 </span> {app_id}",
-      "separate-outputs": true,
-      "tooltip": false
-    },
-    "tray": {
-      "icon-size": 14,
-      "spacing": 8
-    },
-    "disk": {
-      "format": "<span color='#202020' bgcolor='#ea6962' >  </span> {free}",
-      "interval": 20
-    },
-    "cpu": {
-      "format": "<span color='#202020' bgcolor='#e78a4e' >  </span> {usage}%",
-      "tooltip": false,
-      "interval": 1,
-      "on-click-right": "~/.config/custom_scripts/launch_tui.sh btop"
-    },
-    "power-profiles-daemon": {
-      "format": "<span color='#202020' bgcolor='#e78a4e' > {icon} </span>",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
-    },
-    "bluetooth": {
-      "format": "<span color='#202020' bgcolor='#458588' > 󰂯 </span> {num_connections}",
-      "on-click": "footclient --title=bluetui -e bluetui",
-      "tooltip-format-connected": "{device_alias}"
-    },
-    "pulseaudio": {
-      "scroll-step": 1,
-      "format": "<span color='#202020' bgcolor='#83a598' >  </span> {volume}%",
-      "format-muted": "<span color='#202020' bgcolor='#ea6962' >  </span> {volume}%",
-      "format-bluetooth": "<span color='#202020' bgcolor='#83a598' > 󰂰 </span> {volume}%",
-      "format-bluetooth-muted": "<span color='#202020' bgcolor='#ea6962' > 󰂲 </span> {volume}%",
-      "format-source": "{volume}% ",
-      "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-      "on-click-right": "~/.config/custom_scripts/launch_tui.sh wiremix",
-      "tooltip": false,
-      "max-volume": 130
-    },
-    "battery": {
-      "interval": 1,
-      "states": {
-        "good": 99,
-        "warning": 30,
-        "critical": 20
-      },
-      "format-icons": [
-        "󰂎",
-        "󰁺",
-        "󰁻",
-        "󰁽",
-        "󰁾",
-        "󰁿",
-        "󰂀",
-        "󰂁",
-        "󰂂",
-        "󰁹"
-      ],
-      "format": "<span color='#202020' bgcolor='#689d6a' > {icon} </span> {capacity}%",
-      "format-critical": "<span color='#202020' bgcolor='#cc241d' > {icon} </span> {capacity}%!!",
-      "format-warning": "<span color='#202020' bgcolor='#e78a4e' > {icon} </span> {capacity}%",
-      "format-full": "<span color='#202020' bgcolor='#689d6a' > {icon} </span> {capacity}%",
-      "format-charging": "<span color='#202020' bgcolor='#689d6a' > 󰂅 </span> {capacity}%",
-      "format-charging-warning": "<span color='#202020' bgcolor='#e78a4e' > 󰢝 </span> {capacity}%",
-      "format-charging-critical": "<span color='#202020' bgcolor='#cc241d' > 󰢜 </span> {capacity}%",
-      "format-plugged": "<span color='#202020' bgcolor='#689d6a' > 󰂅 </span> {capacity}%",
-      "format-alt": "<span color='#202020' bgcolor='#689d6a' > 󱧥 </span> {time}",
-      "tooltip": false
-    },
-    "network": {
-      "interval": 2,
-      "format": "<span color='#202020' bgcolor='#d3869b'> 󱘖 </span> {bandwidthDownBits}",
-      "format-wifi": "<span color='#202020' bgcolor='#d3869b'> {icon} </span> {bandwidthDownBits}",
-      "format-ethernet": "<span color='#202020' bgcolor='#d3869b'> 󰈀 </span> {bandwidthDownBits}",
-      "format-icons": [
-        "󰤫",
-        "󰤟",
-        "󰤢",
-        "󰤥",
-        "󰤨"
-      ],
-      "tooltip-format-wifi": "{essid}",
-      "tooltip-format-ethernet": "{ipaddr}",
-      "states": {
-        "normal": 25
-      },
-      "on-click-right": "~/.config/custom_scripts/launch_tui.sh impala"
-    },
-    "clock": {
-      "format": "<span color='#202020' bgcolor='#8ec07c' >  </span> {:%a %d | %H:%M}",
-      "tooltip": false,
-      "interval": 1
+{
+  "layer": "top",
+  "height": 20,
+  "spacing": 4,
+  "margin-top": 5,
+  "margin-left": 5,
+  "margin-right": 5,
+  "modules-left": [
+    "custom/rofi",
+    "niri/language",
+    "niri/workspaces",
+    "niri/window",
+    "tray"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "network",
+    "power-profiles-daemon",
+    "bluetooth",
+    "pulseaudio",
+    "battery"
+  ],
+  "custom/rofi": {
+    "format": "<span></span>",
+    "on-click": "rofi -show drun -disable-history -show-icons -theme-str 'window { width: 22% ; location: northwest; margin: 10px 0 0 10px; } listview { lines: 20; }'",
+    "on-click-right": "~/.config/custom_scripts/power.sh",
+    "escape": true,
+    "tooltip": false
+  },
+  "niri/language": {
+    "on-click": "niri msg action switch-layout next",
+    "format-en": "",
+    "format-Graphite": "󰇈"
+  },
+  // Modules configuration
+  "niri/workspaces": {
+    "disable-scroll": true,
+    "active-only": false,
+    "all-outputs": true,
+    "warp-on-scroll": false,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "<span>󰧨</span>",
+      "2": "<span>󰈹</span>",
+      "3": "<span></span>",
+      "4": "<span></span>",
+      "5": "<span></span>",
+      "6": "<span>󰭛</span>",
+      "7": "<span>󱓷</span>",
+      "8": "<span>󰚀</span>"
     }
   },
-  {
-    "layer": "top",
-    "position": "bottom",
-    "height": 41,
-    "width": 2,
-    "modules-center": [
-      "wlr/taskbar"
-    ],
-    "margin": "4",
-    "spacing": "5",
-    "niri/window": {
-      "max-length": 50
+  "niri/window": {
+    "format": "<span color='#202020' bgcolor='#d3869b' > 󰣆 </span> {app_id}",
+    "separate-outputs": true,
+    "tooltip": false
+  },
+  "tray": {
+    "icon-size": 14,
+    "spacing": 8
+  },
+  "pulseaudio": {
+    "scroll-step": 2,
+    "format": "<span color='#202020' bgcolor='#83a598' >  </span> {volume}%",
+    "format-muted": "<span color='#202020' bgcolor='#ea6962' >  </span> {volume}%",
+    "format-bluetooth": "<span color='#202020' bgcolor='#83a598' > 󰂰 </span> {volume}%",
+    "format-bluetooth-muted": "<span color='#202020' bgcolor='#ea6962' > 󰂲 </span> {volume}%",
+    "format-source": "{volume}% ",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "~/.config/custom_scripts/launch_tui.sh wiremix",
+    "tooltip": false,
+    "max-volume": 130
+  },
+  "battery": {
+    "interval": 1,
+    "states": {
+      "good": 99,
+      "warning": 30,
+      "critical": 20
     },
-    "wlr/taskbar": {
-      "format": "{icon}",
-      "icon-size": 28,
-      "spacing": 3,
-      "on-click-middle": "close",
-      "tooltip-format": "{title}",
-      "ignore-list": [],
-      "on-click": "activate"
+    "format-icons": [
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ],
+    "format": "<span color='#202020' bgcolor='#689d6a' > {icon} </span> {capacity}%",
+    "format-critical": "<span color='#202020' bgcolor='#cc241d' > {icon} </span> {capacity}%!!",
+    "format-warning": "<span color='#202020' bgcolor='#e78a4e' > {icon} </span> {capacity}%",
+    "format-full": "<span color='#202020' bgcolor='#689d6a' > {icon} </span> {capacity}%",
+    "format-charging": "<span color='#202020' bgcolor='#689d6a' > 󰂅 </span> {capacity}%",
+    "format-charging-warning": "<span color='#202020' bgcolor='#e78a4e' > 󰢝 </span> {capacity}%",
+    "format-charging-critical": "<span color='#202020' bgcolor='#cc241d' > 󰢜 </span> {capacity}%",
+    "format-plugged": "<span color='#202020' bgcolor='#689d6a' > 󰂅 </span> {capacity}%",
+    "format-alt": "<span color='#202020' bgcolor='#689d6a' > 󱧥 </span> {time}",
+    "tooltip": false
+  },
+  "network": {
+    "interval": 2,
+    "format": "<span color='#202020' bgcolor='#d3869b'> 󱘖 </span> {bandwidthDownBits}",
+    "format-wifi": "<span color='#202020' bgcolor='#d3869b'> {icon} </span> {bandwidthDownBits}",
+    "format-ethernet": "<span color='#202020' bgcolor='#d3869b'> 󰈀 </span> {bandwidthDownBits}",
+    "format-icons": [
+      "󰤫",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "tooltip-format-wifi": "{essid}",
+    "states": {
+      "normal": 25
     }
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
+  "bluetooth": {
+    "format": "<span color='#202020' bgcolor='#458588'>  </span> {num_connections}",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "footclient --title=bluetui -e bluetui"
+  },
+  "clock": {
+    "format": "<span color='#202020' bgcolor='#8ec07c' >  </span> {:%a %d | %H:%M}",
+    "tooltip": false,
+    "interval": 1
   }
-]
+},
+// {
+//   "layer": "top",
+//   "position": "bottom",
+//   "height": 41,
+//   "width": 2,
+//   "modules-center": [
+//     "wlr/taskbar"
+//   ],
+//   "margin": "4",
+//   "spacing": "5",
+//   "niri/window": {
+//     "max-length": 50
+//   },
+//   "wlr/taskbar": {
+//     "format": "{icon}",
+//     "icon-size": 28,
+//     "spacing": 3,
+//     "on-click-middle": "close",
+//     "tooltip-format": "{title}",
+//     "ignore-list": [],
+//     "on-click": "activate"
+//   }
+// }

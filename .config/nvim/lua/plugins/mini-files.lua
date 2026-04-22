@@ -29,5 +29,9 @@ return {
       go_in = "<Right>",
       go_out = "<Left>",
     },
+    windows = {
+      preview = true,
+      width_preview = 50,
+    },
   },
 }

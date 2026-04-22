@@ -16,9 +16,10 @@ window-rule {
 // scratchpad applications
 window-rule {
   match app-id="obsidian"
-  match title="neo-obsidian"
+  match app-id="neo.obsidian.ghostty"
   match app-id="Bitwarden"
   match app-id="btop"
+  match app-id="yazi"
   default-column-width { fixed 1200; }
   default-window-height { fixed 800; }
   open-on-workspace "Scratchpad"
@@ -29,7 +30,7 @@ window-rule {
 // chat applications
 window-rule {
   match app-id="telegram"
-  match app-id="Slack"
+  match app-id="slack"
   match app-id="betterbird"
   open-on-workspace "Chat"
   open-focused false
@@ -47,11 +48,6 @@ window-rule {
   open-on-workspace "Browser"
 }
 
-// file manager
-window-rule {
-  match title="yazi"
-  open-on-workspace "System Tools and Misc"
-}
 // window rules below copied from dms
 window-rule {
     match app-id=r#"^org\.gnome\."#
