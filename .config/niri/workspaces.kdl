@@ -1,8 +1,0 @@
-workspace "Terminal"
-workspace "Browser"
-workspace "Development/Coding"
-workspace "Work"
-workspace "Chat"
-workspace "Office Tools"
-workspace "System Tools and Misc"
-workspace "Scratchpad" // niri-scratchpad
