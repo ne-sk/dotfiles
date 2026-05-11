@@ -1,0 +1,14 @@
+window {
+  border-radius: 0;
+  opacity: 0.97;
+  border: 2px solid;
+}
+
+label {
+  font-family: "Maple Mono NF";
+  font-size: 11pt;
+}
+
+progressbar {
+  border-radius: 0;
+}

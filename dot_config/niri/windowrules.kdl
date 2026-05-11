@@ -1,0 +1,78 @@
+// window-rule {
+//   match title="^*$"
+//   open-floating true
+// }
+
+// always float
+window-rule {
+  match title="^clipse$"
+  match app-id=r#"org.nmrs.ui$"#
+  match title="^bluetui$"
+  match title="^wiremix$"
+  match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+  match app-id=r#"org.telegram.desktop"# title="^Media viewer$"
+  open-floating true
+}
+
+// scratchpad applications
+window-rule {
+  match app-id="obsidian"
+  match app-id="neo.obsidian.ghostty"
+  match app-id="Bitwarden"
+  match app-id="btop"
+  match app-id="yazi"
+  default-column-width { fixed 1200; }
+  default-window-height { fixed 800; }
+  open-on-workspace "Scratchpad"
+  open-floating true
+  open-focused false
+}
+
+// window rules below copied from dms
+window-rule {
+    match app-id=r#"^org\.gnome\."#
+    draw-border-with-background false
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+window-rule {
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    match app-id="Alacritty"
+    match app-id="zen"
+    match app-id="com.mitchellh.ghostty"
+    match app-id="kitty"
+    match app-id="footclient" 
+    draw-border-with-background false
+}
+
+// window-rule {
+//   match is-active=true
+//   opacity 0.87
+//   background-effect {
+//     blur true
+//   }
+// }
+
+// opacity rules
+window-rule {
+    match is-active=false
+    opacity 0.8
+    background-effect {
+     blur true
+    }
+}
+
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+recent-windows {
+    binds {
+        Alt+Tab         { next-window scope="output"; }
+        Alt+Shift+Tab   { previous-window scope="output"; }
+        Alt+grave       { next-window filter="app-id"; }
+        Alt+Shift+grave { previous-window filter="app-id"; }
+    }
+}
