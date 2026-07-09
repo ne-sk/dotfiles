@@ -128,6 +128,10 @@ button:hover {
   background-color: @neutral_yellow;
 }
 
+#workspaces button {
+  padding: 2px;
+}
+
 #workspaces button.active {
   color: black;
 }
