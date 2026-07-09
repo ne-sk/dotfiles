@@ -193,3 +193,6 @@ map("n", "gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
 
 -- Vim pack keymaps
 map("n", "<leader>pu", "<cmd>lua vim.pack.update()<CR>")
+
+-- Exit terminal mode to normal mode
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
