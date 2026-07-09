@@ -1,0 +1,44 @@
+[main]
+pad=5x5 center
+font=CommitMono Nerd Font:size=11:weight=regular
+font-bold=CommitMono Nerd Font:size=11:weight=extrabold
+font-italic=CommitMono Nerd Font:size=11:weight=semibold:slant:italic
+font-bold-italic=CommitMono Nerd Font:size=11:weight=extrabold:slant:italic
+letter-spacing=0px
+horizontal-letter-offset=0
+vertical-letter-offset=0
+line-height = 16.5
+box-drawings-uses-font-glyphs=no
+initial-window-size-pixels = 1300x800
+resize-by-cells=no
+
+[colors-dark]
+cursor=000000 ebdbb2
+
+# Gruvbox material medium
+background=282828
+foreground=d4be98
+
+regular0=3c3836
+regular1=ea6962
+regular2=a9b665
+regular3=d8a657
+regular4=7daea3
+regular5=d3869b
+regular6=89b482
+regular7=d4be98
+
+bright0=3c3836
+bright1=ea6962
+bright2=a9b665
+bright3=d8a657
+bright4=7daea3
+bright5=d3869b
+bright6=89b482
+bright7=d4be98
+
+blur=yes
+
+[scrollback]
+lines=20000
+indicator-position=none

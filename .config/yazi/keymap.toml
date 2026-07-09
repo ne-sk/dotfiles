@@ -1,0 +1,114 @@
+# A TOML linter such as https://github.com/tombi-toml/tombi can use this schema to validate your config.
+# If you encounter any problems, please make an issue at https://github.com/yazi-rs/schemas.
+
+#:schema https://yazi-rs.github.io/schemas/keymap.json
+
+[mgr]
+
+[[mgr.prepend_keymap]]
+on = ["H"]
+desc = "One tab left"
+run = "tab_switch --relative -1"
+
+[[mgr.prepend_keymap]]
+on = ["L"]
+desc = "One tab right"
+run = "tab_switch --relative 1"
+
+[[mgr.prepend_keymap]]
+# Open the dir where mounted flash drives are
+on = ["g", "m"]
+desc = "Go to mounted drives"
+run = "cd /run/media/${USER}/"
+
+[[mgr.prepend_keymap]]
+# chmod.yazi
+on = ["c", "m"]
+run = "plugin chmod"
+desc = "Chmod on selected files"
+
+[[mgr.prepend_keymap]]
+# Open the file/folder in ripdrag
+on = ["b", "d"]
+desc = "Drag from ripdrag"
+run = '''
+shell 'ripdrag "$@" -x 2>/dev/null &' --confirm
+'''
+
+[[mgr.prepend_keymap]]
+on = ["b", "j"]
+desc = "open in Junction"
+run = '''
+shell 'flatpak run re.sonny.Junction "$@"' --confirm --orphan
+'''
+[[mgr.prepend_keymap]]
+# Filter
+on = ["f"]
+run = "filter --smart"
+desc = "Filter the files"
+
+
+[[mgr.prepend_keymap]]
+on = ["S"]
+run = "search --via=rga"
+desc = "Search files by content using ripgrep"
+
+[[mgr.prepend_keymap]]
+on = ["b", "c"]
+run = "plugin ouch --args=zip"
+desc = "Compress with ouch"
+
+[[mgr.prepend_keymap]]
+on = ["b", "a"]
+run = "plugin archivemount --args=mount"
+desc = "Mount selected archive"
+
+[[mgr.prepend_keymap]]
+on = ["b", "u"]
+run = "plugin archivemount --args=unmount"
+desc = "Unmount and save changes to original archive"
+
+[[mgr.prepend_keymap]]
+on = ["b", "o"]
+run = "plugin open-with-cmd -- block"
+desc = "Open with command in the terminal"
+
+[[mgr.prepend_keymap]]
+on = ["b", "O"]
+run = "plugin open-with-cmd"
+desc = "Open with command"
+
+[[mgr.prepend_keymap]]
+on = ["b", "s"]
+run = "plugin what-size"
+desc = "get Size of selection/CWD"
+
+[[mgr.prepend_keymap]]
+on = ["b", "g"]
+run = "shell 'lazygit' --confirm --block"
+desc = "open lazyGit in current folder"
+
+[[mgr.prepend_keymap]]
+on = ["T"]
+run = "shell 'tmux new-window -a $EDITOR \"$0\"' --confirm --orphan"
+desc = "Open in $EDITOR in new tmux tab"
+
+[[mgr.prepend_keymap]]
+on = ["b", "T"]
+run = "shell 'neovide \"$0\"' --confirm --orphan"
+desc = "Open in Neovide"
+
+[[mgr.prepend_keymap]]
+on = ["b", "t"]
+run = "shell 'tmux new-window -a' --confirm --orphan"
+desc = "Open shell here in in new tmux tab"
+
+[[mgr.prepend_keymap]]
+on = ["z"]
+run = "plugin zoxide"
+desc = "Jump to directory using Zoxide"
+
+[[mgr.prepend_keymap]]
+on = ["Z"]
+run = "plugin fzf"
+desc = "Select a file to reveal using FZF"

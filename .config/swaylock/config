@@ -1,0 +1,56 @@
+
+#  ____                     _            _
+# / ___|_      ____ _ _   _| | ___   ___| | __
+# \___ \ \ /\ / / _` | | | | |/ _ \ / __| |/ /
+#  ___) \ V  V / (_| | |_| | | (_) | (__|   <
+# |____/ \_/\_/ \__,_|\__, |_|\___/ \___|_|\_\
+#                     |___/
+#
+# by Stephan Raabe and Rithul Kamesh (2023)
+# -----------------------------------------------------
+
+color=000000
+
+image=~/Pictures/backgrounds/a-gas-station-with-lights-on-the-front-and-a-car-parked-in-the-front.jpg
+
+ignore-empty-password
+font="Maple Mono NF"
+
+# smaller indicator
+indicator-radius=100
+
+indicator-thickness=20
+indicator-caps-lock
+
+#Define all colors
+
+key-hl-color=000000bb
+separator-color=00000000
+
+inside-color=000000bb
+inside-clear-color=98971abb
+inside-caps-lock-color=d65d0ebb
+inside-ver-color=458588bb
+inside-wrong-color=cc241dbb
+
+ring-color=fbf1c7
+ring-clear-color=fbf1c7
+ring-caps-lock-color=fbf1c7
+ring-ver-color=fbf1c7
+ring-wrong-color=fbf1c7
+
+line-color=fbf1c7
+line-clear-color=fbf1c7
+line-caps-lock-color=fbf1c7
+line-ver-color=fbf1c7
+line-wrong-color=fbf1c7
+
+text-color=fb1c7
+text-clear-color=fb1c7
+text-ver-color=fb1c7
+text-wrong-color=fb1c7
+
+bs-hl-color=cc241dbb
+caps-lock-key-hl-color=ffffffFF
+caps-lock-bs-hl-color=ffffffFF
+text-caps-lock-color=ffffff

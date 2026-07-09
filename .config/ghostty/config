@@ -1,0 +1,25 @@
+# fonts
+font-family = "CommitMono Nerd Font"
+font-family-bold = "CommitMono Nerd Font"
+font-family-italic = "Maple Mono NF"
+font-family-bold-italic = "Maple Mono NF"
+font-size = 11
+adjust-underline-position = 4
+
+# mouse
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 1
+
+# theme
+theme = tokyonight_night
+cursor-invert-fg-bg = true
+window-theme = ghostty
+
+# window
+gtk-single-instance = true
+window-decoration = false
+
+# startup command
+command = tmux new-session -A -s main
+# other
+copy-on-select = clipboard

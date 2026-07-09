@@ -1,0 +1,83 @@
+// always float
+window-rule {
+  // match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+  // match app-id=r#"org.telegram.desktop"# title="^Media viewer$"
+  // match app-id=r#"re.sonny.Junction"#
+  // match app-id="com.gabm.satty"
+  open-floating true
+}
+
+// scratchpad applications
+window-rule {
+  match app-id="obsidian"
+  match app-id="nvim.obsidian.ghostty"
+  match app-id="Bitwarden"
+  match app-id="btop"
+  match app-id="yazi"
+  match app-id="todoist"
+  open-on-workspace "Scratchpad"
+  open-floating true
+  open-focused false
+}
+
+// window rules below copied from dms
+window-rule {
+    match app-id=r#"^org\.gnome\."#
+    draw-border-with-background false
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+// stops drawing borders and focus rings as rectangles behind applications
+window-rule {
+    match app-id="Alacritty"
+    match app-id="zen"
+    match app-id="com.mitchellh.ghostty"
+    match app-id="kitty"
+    match app-id="footclient" 
+    match app-id="firefox"
+    match app-id="obsidian"
+    match app-id="maestro-studio"
+    match app-id=r#"org.telegram.desktop"#
+    draw-border-with-background false
+}
+
+
+// opacity rules
+window-rule {
+    match is-active=false
+    opacity 0.8
+    background-effect {
+      blur true
+    }
+}
+
+// opacity rules
+window-rule {
+    match is-active=true
+    opacity 0.95
+    background-effect {
+      blur true
+    }
+}
+
+window-rule {
+  match app-id="zen"
+  match app-id="slurp"
+  match app-id="wf-recorder"
+  opacity 1.0
+}
+
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+recent-windows {
+    binds {
+        Alt+Tab         { next-window scope="output"; }
+        Alt+Shift+Tab   { previous-window scope="output"; }
+        Alt+grave       { next-window filter="app-id"; }
+        Alt+Shift+grave { previous-window filter="app-id"; }
+    }
+}
