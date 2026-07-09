@@ -1,8 +1,12 @@
-vim.pack.add({ "https://github.com/sainnhe/gruvbox-material" })
-vim.g.gruvbox_material_background = "hard"
-vim.g.gruvbox_material_better_performance = 1
-vim.cmd("colorscheme gruvbox-material")
+-- vim.pack.add({ "https://github.com/sainnhe/gruvbox-material" })
+-- vim.g.gruvbox_material_background = "hard"
+-- vim.g.gruvbox_material_better_performance = 1
+-- vim.cmd("colorscheme gruvbox-material")
 
+vim.pack.add({ "https://github.com/shaunsingh/nord.nvim" })
+vim.cmd("colorscheme nord")
+vim.g.nord_borders = true
+vim.g.contrast = true
 -- vim.pack.add({ "https://github.com/folke/tokyonight.nvim" })
 -- vim.cmd("colorscheme tokyonight-night")
 
