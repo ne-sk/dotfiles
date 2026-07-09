@@ -1,7 +1,7 @@
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "footclient"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty" "+new-window"; }
 
     Mod+Space hotkey-overlay-title="Vicinae Toggle" { spawn "vicinae" "toggle"; }
     Mod+P hotkey-overlay-title="Vicinae Clipboard" { spawn "vicinae" "vicinae://launch/clipboard/history"; }
