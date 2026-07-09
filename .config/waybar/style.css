@@ -130,10 +130,11 @@ button:hover {
 
 #workspaces button {
   padding: 2px;
+  color: black;
 }
 
 #workspaces button.active {
-  color: black;
+  color: white;
 }
 
 #workspaces button.empty {
