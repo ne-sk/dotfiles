@@ -11,7 +11,7 @@ mouse-hide-while-typing = true
 mouse-scroll-multiplier = 1
 
 # theme
-theme = tokyonight_night
+theme = Nord
 cursor-invert-fg-bg = true
 window-theme = ghostty
 
@@ -20,6 +20,6 @@ gtk-single-instance = true
 window-decoration = false
 
 # startup command
-command = tmux new-session -A -s main
+# command = tmux new-session -A -s main
 # other
 copy-on-select = clipboard
