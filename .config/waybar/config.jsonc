@@ -3,7 +3,7 @@
   "height": 20,
   "spacing": 8,
   "modules-left": [
-    "niri/language",
+    // "niri/language",
     "niri/workspaces",
     "niri/window",
     "tray"

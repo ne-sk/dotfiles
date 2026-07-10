@@ -8,8 +8,8 @@
   text-shadow: none;
   transition: none;
   box-shadow: none;
-  background-color: #282828;
-  color: #d4be98;
+  background-color: #2e3440;
+  color: #eceff4;
 }
 
 window#waybar {
@@ -41,7 +41,7 @@ window#waybar {
 
 /* ===== MODULES ===== */
 #workspaces {
-  background-color: #282828;
+  background-color: #2e3440;
 }
 
 #workspaces button {
@@ -50,8 +50,7 @@ window#waybar {
 
 #workspaces button.active,
 #workspaces button.active * {
-  /* border-bottom: 2px solid #ea6962; */
-  color: #ea6962;
+  color: #88c0d0;
 }
 
 #language {
