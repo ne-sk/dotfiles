@@ -64,17 +64,6 @@
       "normal": 25
     }
   },
-  "power-profiles-daemon": {
-    "format": "{icon}",
-    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-    "tooltip": true,
-    "format-icons": {
-      "default": "",
-      "performance": "",
-      "balanced": "",
-      "power-saver": ""
-    }
-  },
   "bluetooth": {
     "format": " {num_connections}",
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
@@ -86,7 +75,7 @@
     "scroll-step": 2,
     "format": " {volume}%",
     "format-muted": " {volume}%",
-    "format-bluetooth": " 󰂰 {volume}%",
+    "format-bluetooth": "󰂰 {volume}%",
     "format-bluetooth-muted": "󰂲 {volume}%",
     "format-source": "{volume}% ",
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
