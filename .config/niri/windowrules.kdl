@@ -4,6 +4,7 @@ window-rule {
   // match app-id=r#"org.telegram.desktop"# title="^Media viewer$"
   // match app-id=r#"re.sonny.Junction"#
   // match app-id="com.gabm.satty"
+  // match app-id="mpv"
   open-floating true
 }
 
@@ -28,6 +29,13 @@ window-rule {
     clip-to-geometry true
 }
 
+window-rule {
+  match app-id="btop"
+  default-window-height { fixed 600; }
+  default-column-width { fixed 1000; }
+}
+
+
 // stops drawing borders and focus rings as rectangles behind applications
 window-rule {
     match app-id="Alacritty"
@@ -39,6 +47,8 @@ window-rule {
     match app-id="obsidian"
     match app-id="maestro-studio"
     match app-id=r#"org.telegram.desktop"#
+    match app-id="Zotero"
+    match app-id="com.github.PintaProject.Pinta"
     draw-border-with-background false
 }
 
@@ -46,16 +56,16 @@ window-rule {
 // opacity rules
 window-rule {
     match is-active=false
-    opacity 0.8
+    opacity 0.85
     background-effect {
-      blur true
+      // blur true
     }
 }
 
 // opacity rules
 window-rule {
     match is-active=true
-    opacity 0.95
+    opacity 0.90
     background-effect {
       blur true
     }
@@ -63,13 +73,11 @@ window-rule {
 
 window-rule {
   match app-id="zen"
-  match app-id="slurp"
-  match app-id="wf-recorder"
   opacity 1.0
 }
 
 window-rule {
-    geometry-corner-radius 0
+    geometry-corner-radius 8
     clip-to-geometry true
 }
 
