@@ -62,19 +62,14 @@ window-rule {
     }
 }
 
-// opacity rules
-window-rule {
-    match is-active=true
-    opacity 0.90
-    background-effect {
-      blur true
-    }
-}
-
-window-rule {
-  match app-id="zen"
-  opacity 1.0
-}
+// // opacity rules
+// window-rule {
+//     match is-active=true
+//     opacity 0.90
+//     background-effect {
+//       blur true
+//     }
+// }
 
 window-rule {
     geometry-corner-radius 8
