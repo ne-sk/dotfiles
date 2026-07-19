@@ -137,3 +137,11 @@ end, { desc = "Format buffer" })
 vim.keymap.set({ "n", "v" }, "<leader>cF", function()
 	require("conform").format({ formatters = { "injected" }, timeout_ms = 3000 })
 end, { desc = "Format Injected Langs" })
+
+-- create keybinds for only norg filetypes
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "norg",
+	callback = function()
+		vim.keymap.set("n", "<localleader>0", "<Cmd>Neorg toc<CR>", { buffer = true })
+	end,
+})
