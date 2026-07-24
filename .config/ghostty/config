@@ -11,7 +11,7 @@ mouse-hide-while-typing = true
 mouse-scroll-multiplier = 1
 
 # theme
-theme = gruvbox-material-hard-dark
+theme = Everforest Dark Hard
 cursor-invert-fg-bg = true
 window-theme = ghostty
 
