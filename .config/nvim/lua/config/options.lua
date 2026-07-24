@@ -15,6 +15,8 @@ opt.expandtab = true -- use spaces not tabs
 -- opt.smartindent = true -- might not be relevant
 opt.autoindent = true -- copy indent from previous line
 opt.breakindent = true -- indent wrapped lines
+opt.breakindentopt = { "shift:2", "min:30" }
+opt.showbreak = ""
 
 ----------------- search settings
 opt.ignorecase = true -- case insensitive search

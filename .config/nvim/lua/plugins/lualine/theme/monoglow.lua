@@ -1,0 +1,62 @@
+local colors = {
+	bg = "#121212",
+	gray1 = "#080808",
+	gray2 = "#191919",
+	gray3 = "#2a2a2a",
+	gray4 = "#444444",
+	gray5 = "#555555",
+	gray6 = "#7a7a7a",
+	gray7 = "#aaaaaa",
+	gray8 = "#cccccc",
+	gray9 = "#dddddd",
+	gray10 = "#f1f1f1",
+	fg = "#cccccc",
+	white = "#ffffff",
+	glow = "#1bfd9c",
+	lack = "#708090",
+	luster = "#deeeed",
+	blue1 = "#b2d8d8",
+	blue2 = "#66b2b2",
+	add = "#baffc9",
+	change = "#ffffba",
+	delete = "#ffb3ba",
+	red = "#ffc0b9",
+	yellow = "#fce094",
+	green = "#b3f6c0",
+	cyan = "#8cf8f7",
+	blue = "#a6dbff",
+	magenta = "#ffcaff",
+}
+
+return {
+	normal = {
+		a = { bg = colors.bg, fg = colors.fg },
+		b = { bg = colors.gray2, fg = colors.white },
+		c = { bg = colors.gray4, fg = colors.gray10 },
+	},
+	insert = {
+		a = { bg = colors.glow, fg = colors.gray1 },
+		b = { bg = colors.gray8, fg = colors.white },
+		c = { bg = colors.gray8, fg = colors.white },
+	},
+	visual = {
+		a = { bg = colors.yellow, fg = colors.gray1 },
+		b = { bg = colors.gray8, fg = colors.white },
+		c = { bg = colors.gray5, fg = colors.gray1 },
+	},
+	replace = {
+		a = { bg = colors.red, fg = colors.gray1 },
+		b = { bg = colors.gray8, fg = colors.white },
+		c = { bg = colors.gray1, fg = colors.white },
+	},
+	command = {
+		a = { bg = colors.green, fg = colors.gray1 },
+		b = { bg = colors.gray8, fg = colors.white },
+		c = { bg = colors.gray5, fg = colors.gray1 },
+	},
+	inactive = {
+		a = { bg = colors.gray2, fg = colors.gray6 },
+		b = { bg = colors.gray2, fg = colors.gray6 },
+		c = { bg = colors.gray2, fg = colors.gray6 },
+	},
+} -- require('lualine').setup {options = {theme = gruvbox}}
