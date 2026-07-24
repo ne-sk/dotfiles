@@ -1,17 +1,16 @@
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "footclient"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
 
     Mod+Space hotkey-overlay-title="Vicinae Toggle" { spawn "vicinae" "toggle"; }
     Mod+P hotkey-overlay-title="Vicinae Clipboard" { spawn "vicinae" "vicinae://launch/clipboard/history"; }
 
     Mod+F hotkey-overlay-title="Run yazi" { spawn "ns.py" "-id" "yazi" "-s" "footclient --app-id=yazi -e yazi"; }
     Mod+S hotkey-overlay-title="Run btop" { spawn "ns.py" "-id" "btop" "-s" "footclient --app-id btop -e sh -c btop"; }
-    Mod+N hotkey-overlay-title="Run obsidian"{ spawn "ns.py" "-id" "obsidian" "-s" "obsidian"; }
-    Mod+Ctrl+N hotkey-overlay-title="Open obsidian in nvim" { spawn "ns.py" "-id" "nvim.obsidian.ghostty" "-s" "ghostty --class=nvim.obsidian.ghostty --working-directory=~/git-projects/notes -e nvim ."; }
+    // Mod+Ctrl+N hotkey-overlay-title="Open obsidian in nvim" { spawn "ns.py" "-id" "nvim.obsidian.ghostty" "-s" "ghostty --class=nvim.obsidian.ghostty --working-directory=~/git-projects/notes -e nvim ."; }
     Mod+Slash hotkey-overlay-title="Run bitwarden" { spawn "ns.py" "-id" "Bitwarden" "-s" "bitwarden-desktop"; }
-    Mod+T hotkey-overlay-title="Run todoist" { spawn "ns.py" "-id" "todoist" "-s" "todoist"; }
+    Mod+T hotkey-overlay-title="Run ticktick" { spawn "ns.py" "-id" "ticktick" "-s" "ticktick"; }
 
     Mod+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
@@ -150,10 +149,9 @@ binds {
 
     Mod+W { toggle-column-tabbed-display; }
 
-    // Print { spawn-sh "set -e; grim -t ppm -g \"$(slurp -o -d -F monospace)\" - | satty --filename - --copy-command=wl-copy --annotation-size-factor 1.0 --output-filename=\"$(xdg-user-dir PICTURES)/Screenshots/Screenshot from %Y-%m-%d %H:%M:%S.png\" --actions-on-enter=\"save-to-clipboard,exit\" --brush-smooth-history-size=5 --disable-notifications"; }
-    Print { screenshot; }
+    // Print { screenshot; }
+    Print { spawn-sh "grim -g \"$(slurp)\" - | swappy -f -"; }
     Ctrl+Print { screenshot-screen; }
-    Alt+Print hotkey-overlay-title="Region screen record" { spawn "/home/elvis/.config/niri/scripts/screenrecord.sh"; }
 
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 

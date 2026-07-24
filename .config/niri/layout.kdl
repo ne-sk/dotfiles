@@ -27,9 +27,8 @@ layout {
     }
 
     focus-ring {
-        width 4
-        active-color "#3B95A1"
+        width 2
+        active-color "#d3c6aa"
         inactive-color "#ffffff00"
-        active-gradient from="#f00f" to="#0f05" angle=45 in="oklch longer hue"
     }
 }
