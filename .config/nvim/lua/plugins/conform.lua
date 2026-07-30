@@ -14,6 +14,7 @@ require("conform").setup({
 		css = { "biome", "prettierd", stop_after_first = true },
 		html = { "biome", "prettierd", stop_after_first = true },
 		toml = { "taplo" },
+		tex = { "tex-fmt" },
 	},
 	formatters = {
 		biome = { require_cwd = true },
@@ -85,4 +86,3 @@ end, { desc = "Format buffer" })
 vim.keymap.set({ "n", "v" }, "<leader>cF", function()
 	require("conform").format({ formatters = { "injected" }, timeout_ms = 3000 })
 end, { desc = "Format Injected Langs" })
-

@@ -1,8 +1,7 @@
-return {
-	"folke/trouble.nvim",
-	config = function()
-		require("trouble").setup({})
+vim.pack.add({
+	"https://github.com/folke/trouble.nvim",
+})
 
-		vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics (Trouble)" })
-	end,
-}
+require("trouble").setup({})
+
+vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics (Trouble)" })
