@@ -1,11 +1,11 @@
 {
   "layer": "top",
-  "height": 20,
+  "height": 40,
   "spacing": 8,
   "modules-left": [
-    // "niri/language",
-    "niri/workspaces",
-    "niri/window",
+    "mango/layout",
+    "mango/workspaces",
+    "mango/window",
     "tray"
   ],
   "modules-center": [
@@ -19,22 +19,25 @@
     "custom/notification"
   ],
   // modules left
-  "niri/language": {
-    "on-click": "niri msg action switch-layout next",
-    "format-en": "",
-    "format-graphite": "󰇈"
+  "mango/layout": {
+    "format": "{}"
   },
-  "niri/workspaces": {
-    "disable-scroll": true,
-    "active-only": false,
-    "all-outputs": true,
-    "warp-on-scroll": false,
-    "format": "{index}"
+  "mango/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "active": "",
+      "default": "",
+      "urgent": "",
+      "empty": ""
+    },
+    "on-click": "activate",
+    "on-click-right": "toggle",
+    "overview-label": ""
   },
-  "niri/window": {
+  "mango/window": {
     "format": "{app_id}",
-    "separate-outputs": true,
-    "tooltip": false
+    // "tooltip": false,
+    "icon": true
   },
   "tray": {
     "icon-size": 14,
