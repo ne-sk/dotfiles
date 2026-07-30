@@ -21,8 +21,8 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "CommitMono Nerd Font Mono" :size 14 :weight 'semi-light)
-     doom-variable-pitch-font (font-spec :family "ETbb" :size 14))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 14 :weight 'semi-light)
+     doom-variable-pitch-font (font-spec :family "Ubuntu Mono" :size 14 :weight 'semi-light))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -32,14 +32,13 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
-
-;; (setq doom-everforest-background "hard")  ; or hard (defaults to soft)
-;; (setq doom-theme 'doom-everforest) ; dark variant
+;; (setq doom-theme 'doom-one)
+(setq doom-theme 'doom-vibrant)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
+(global-visual-line-mode 1)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -49,9 +48,6 @@
 (setq org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
 
 (require 'org-roam-protocol)
-
-(use-package! websocket
-    :after org-roam)
 
 (use-package! org-roam-ui
     :after org-roam ;; or :after org
@@ -65,20 +61,26 @@
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start t))
 
-(use-package! mixed-pitch
-  :hook (org-mode . mixed-pitch-mode)
-  :config
-  (setq mixed-pitch-set-height t)
-  (set-face-attribute 'variable-pitch nil :height 1.3))
+(setq
+ ;; Edit settings
+ org-auto-align-tags nil
+ org-tags-column 0
+ org-catch-invisible-edits 'show-and-error
+ org-special-ctrl-a/e t
+ org-insert-heading-respect-content t
 
-(add-hook 'org-mode-hook #'org-superstar-mode)
+ ;; Org styling, hide markup etc.
+ org-hide-emphasis-markers t            
+ org-pretty-entities t
+ org-agenda-tags-column 0
+ org-ellipsis "…")
 
-(setq org-superstar-headline-bullets-list '("◉" "○" "✸" "✿" "◆" "▶"))
-(setq org-superstar-leading-bullet " ")   ;; hides/simplifies the leading stars
-(setq org-superstar-prettify-item-bullets t) ;; also styles plain list items (-, +)
-(setq org-superstar-item-bullet-alist
-      '((?+ . ?➤)
-        (?- . ?•)))
+(use-package! org-modern-indent
+  :hook (org-indent-mode . org-modern-indent-mode))
+
+(setq org-modern-star 'replace)
+
+(setq line-spacing 0.4)
 
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode) ;; removes the 's' key binding
 
@@ -113,6 +115,7 @@
 (map! :n "C-<tab>"          #'centaur-tabs-forward
       :n "C-S-<tab>"        #'centaur-tabs-backward
       :n "C-<iso-lefttab>"  #'centaur-tabs-backward)
+
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `with-eval-after-load' block, otherwise Doom's defaults may override your
 ;; settings. E.g.

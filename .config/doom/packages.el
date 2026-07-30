@@ -53,10 +53,9 @@
 ;; (unpin! t)
 
 (package! mixed-pitch)
-(package! org-superstar)
+;; (package! org-superstar)
 (package! avy)
-;; (package! websocket)
-;; (package! simple-httpd)
-;; (package! f)
 (unpin! org-roam)
 (package! org-roam-ui)
+(package! org-modern-indent
+  :recipe (:host github :repo "jdtsmith/org-modern-indent"))
