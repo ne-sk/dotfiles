@@ -1,6 +1,6 @@
 // always float
 window-rule {
-  match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+  match app-id=r#"firefox$"# title="^picture-in-picture$"
   match app-id=r#"org.telegram.desktop"# title="^Media viewer$"
   match app-id=r#"re.sonny.Junction"#
   match app-id="com.gabm.satty"
@@ -14,23 +14,9 @@ window-rule {
   match app-id="Bitwarden"
   match app-id="btop"
   match app-id="yazi"
-  match app-id="ticktick"
   open-on-workspace "Scratchpad"
   open-floating true
   open-focused false
-}
-
-window-rule {
-  match app-id="com.tmux.session"
-  open-maximized true
-  open-on-workspace "1"
-}
-
-window-rule {
-  match app-id="logseq"
-  open-on-workspace "2"
-  open-focused false
-  open-maximized true
 }
 
 // window rules below copied from dms
@@ -43,6 +29,7 @@ window-rule {
 
 window-rule {
   match app-id="btop"
+  match app-id="yazi"
   default-window-height { fixed 600; }
   default-column-width { fixed 1000; }
 }
@@ -65,23 +52,23 @@ window-rule {
 }
 
 
-// opacity rules
-window-rule {
-    match is-active=false
-    opacity 0.85
-    background-effect {
-      blur true
-    }
-}
+// // opacity rules
+// window-rule {
+//     match is-active=false
+//     opacity 0.85
+//     // background-effect {
+//     //   blur true
+//     // }
+// }
 
 
-blur {
-    // off
-    passes 2
-    offset 1
-    noise 0.02
-    saturation 1.5
-}
+// blur {
+//     // off
+//     passes 2
+//     offset 1
+//     noise 0.02
+//     saturation 1.5
+// }
 
 // // opacity rules
 // window-rule {
