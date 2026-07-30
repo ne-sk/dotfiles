@@ -11,12 +11,12 @@ mouse-hide-while-typing = true
 mouse-scroll-multiplier = 1
 
 # theme
-theme = Everforest Dark Hard
+theme = onedarkpro_onedark_dark
 cursor-invert-fg-bg = true
 window-theme = ghostty
 
 # window
-gtk-single-instance = true
+gtk-single-instance = false
 window-decoration = false
 
 # startup command
