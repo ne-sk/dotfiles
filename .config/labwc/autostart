@@ -1,0 +1,13 @@
+solaar --window=hide --battery-icons=solaar &
+foot --server &
+mega-sync &
+kbuildsycoca6 &
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+kanshi &
+swayosd-server &
+swaync &
+waybar &
+sunsetr &
+awww-daemon &
+vicinae server &
+~/.config/niri/scripts/swayidle.sh &
