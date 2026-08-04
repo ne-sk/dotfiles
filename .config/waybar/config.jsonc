@@ -3,15 +3,17 @@
   "height": 40,
   "spacing": 8,
   "modules-left": [
-    "mango/layout",
-    "mango/workspaces",
-    "mango/window",
-    "tray"
+    // "mango/layout",
+    // "mango/workspaces",
+    // "mango/window",
+    "ext/workspaces",
+    "wlr/taskbar"
   ],
   "modules-center": [
     "clock"
   ],
   "modules-right": [
+    "tray",
     "network",
     "bluetooth",
     "pulseaudio",
@@ -39,9 +41,13 @@
     // "tooltip": false,
     "icon": true
   },
-  "tray": {
-    "icon-size": 14,
-    "spacing": 8
+  "ext/workspaces": {
+    "on-click": "activate"
+  },
+  "wlr/taskbar": {
+    "icon-size": 20,
+    "format": "{icon} {app_id}",
+    "active-only": true
   },
   // modules center
   "clock": {
@@ -51,6 +57,10 @@
     "interval": 1
   },
   // modules right
+  "tray": {
+    "icon-size": 14,
+    "spacing": 8
+  },
   "network": {
     "interval": 2,
     "format": "󱘖 {bandwidthDownBits}",

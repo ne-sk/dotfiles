@@ -18,7 +18,13 @@
     <!-- <raiseOnFocus>yes</raiseOnFocus> -->
   </focus>
   <desktops number="5">
-    <names><name>1</name><name>2</name><name>3</name><name>4</name><name>5</name></names>
+    <names>
+      <name>1</name>
+      <name>2</name>
+      <name>3</name>
+      <name>4</name>
+      <name>5</name>
+    </names>
   </desktops>
   <libinput>
     <device category="touchpad">
@@ -41,11 +47,13 @@
     <!-- my keybinds -->
     <keybind key="W-Return"><action name="Execute"><command>ghostty</command></action></keybind>
     <keybind key="W-q"><action name="Close"/></keybind>
-    THIS I
     <keybind key="W-p"><action name="Execute"><command>vicinae vicinae://launch/clipboard/history</command></action></keybind>
-    <keybind key="W-Tab"><action name="NextWindow" /></keybind>
-    <keybind key="W-S-Tab"><action name="PreviousWindow" /></keybind>
     <keybind key="W-a"><action name="None" /></keybind>
+    <keybind key="W-o"><action name="None" /></keybind>
+
+    <!-- scratchpads -->
+    <keybind key="W-f"><action name="Execute" command="runraisehide ghostty.scratch.yazi ghostty --class=ghostty.scratch.yazi -e yazi" /></keybind>
+    <keybind key="W-b"><action name="Execute" command="runraisehide ghostty.scratch.btop ghostty --class=ghostty.scratch.btop -e btop" /></keybind>
 
     <!--switch to desktops -->
     <keybind key="W-1"><action name="GoToDesktop" to="1" /></keybind>
@@ -67,20 +75,51 @@
     <keybind key="W-S-4"><action name="SendToDesktop" to="4" /></keybind>
     <keybind key="W-S-5"><action name="SendToDesktop" to="5" /></keybind>
 
-    <!-- resize windows -->
+    <!-- window binds -->
     <keybind key="W-equal"><action name="ResizeRelative" right="100" /></keybind>
     <keybind key="W-minus"><action name="ResizeRelative" right="-100" /></keybind>
     <keybind key="W-C-equal"><action name="ResizeRelative" bottom="100" /></keybind>
     <keybind key="W-C-minus"><action name="ResizeRelative" bottom="-100" /></keybind>
+    <keybind key="W-m"><action name="ToggleMaximize" direction="both" /></keybind>
     <keybind key="W-S-f"><action name="ToggleFullscreen" /></keybind>
+    <keybind key="W-Tab">
+      <action name="NextWindow" />
+      <action name="WarpCursor" to="window" />
+    </keybind>
+    <keybind key="W-S-Tab">
+      <action name="PreviousWindow" />
+      <action name="WarpCursor" to="window" />
+    </keybind>
+    <keybind key="A-Tab">
+      <action name="NextWindowImmediate" />
+      <action name="WarpCursor" to="window" />
+    </keybind>
+    <keybind key="A-S-Tab">
+      <action name="PreviousWindowImmediate" />
+      <action name="WarpCursor" to="window" />
+    </keybind>
+    <keybind key="W-c"><action name="AutoPlace" policy="center" /></keybind>
 
     <!-- screenrecord and screenshot -->
-    <keybind key="W-Print"><action name="Execute"><command>/home/nesk/.config/niri/scripts/screenrecord.sh</command></action></keybind>
-    <keybind key="Print"><action name="Execute"><command>sh -c 'grim -g "`slurp`" - | swappy -f -'</command></action></keybind>
+    <keybind key="W-Print"><action name="Execute"><command>/home/nesk/.config/labwc/scripts/screenrecord.sh</command></action></keybind>
+    <keybind key="Print"><action name="Execute"><command>flameshot gui</command></action></keybind>
   </keyboard>
   <windowRules>
     <windowRule identifier="*" serverDecoration="yes">
       <action name="ToggleDecorations" />
     </windowRule>
+    <windowRule identifier="ghostty.scratch.yazi">
+      <action name="ToggleOmnipresent" />
+    </windowRule>
+    <windowRule identifier="ghostty.scratch.btop">
+      <action name="ToggleOmnipresent" />
+    </windowRule>
   </windowRules>
+  <windowSwitcher>
+    <fields>
+      <field content="type" width="20%" />
+      <field content="desktop_entry_name" width="30%" />
+      <field content="title" width="50%" />
+    </fields>
+  </windowSwitcher>
 </labwc_config>
