@@ -1,0 +1,151 @@
+(defcfg
+  linux-dev-names-exclude ("foostan Corne v4 Keyboard")
+  process-unmapped-keys yes
+  block-unmapped-keys no
+  chords-v2-min-idle 250      ;; same as require-prior-idle from ZMK but only for for combo
+  concurrent-tap-hold yes     ;; required to allow for combos and tap-hold-release features to coexist
+  log-layer-changes no        ;; no logging
+)
+
+(defvar
+  ;; variables for timings in ms using ZMK-like names
+  one-shot-timeout 60000
+  tapping-term 200                       ;; A higher number allows for one handed modded keys reducing the chance of false-positives when typing fast
+  quick-tap-ms 150                       ;; same as ZMK ($tap-repress-timeout in Kanata docs)
+  require-prior-idle 250                 ;; same as ZMK (not used in vanilla kanata, but used as a workaround in this config)  
+  combo-timeout 60
+  
+  ;; keys for tap-hold-release-tap-keys-release templates
+  ;; Left hand physical keys (defsrc QWERTY)
+  left-side-keys      (q w e r t g z x c v b)
+  home-row-left-keys  (a s d f)
+
+ ;; Right hand physical keys (defsrc QWERTY)
+  right-side-keys     (y u i o p h n m , . / ')
+  home-row-right-keys (j k l ;)
+)
+
+(deftemplate nomod (tap-key)
+  (multi $tap-key @tap)
+)
+
+(defalias
+  es (tap-hold 200 200 esc caps)
+  spcnav (tap-hold 200 200 spc (layer-while-held nav))
+  os1 (one-shot $one-shot-timeout lsft)
+  os2 (one-shot $one-shot-timeout lctl)
+  os3 (one-shot $one-shot-timeout lmet)
+  os4 (one-shot $one-shot-timeout lalt)
+
+  ;; quasi-zmk's 'require-prior-idle' behavior
+  tap (multi                                             
+    (layer-switch nomods)                                ;; temporarily switches to a layer with no home row mods enabled
+    (on-idle $require-prior-idle tap-virtualkey to-base) ;; when $require-prior-idle expires, uses the fake key to return to base layer (see )
+  )
+
+  ;; home row mods
+  n (t! lhrm   $tapping-term        n lalt  )
+  r (t! lhrm   $tapping-term        r lctl  )
+  t (t! lhrm   $tapping-term        t lmet  )
+  s (t! lhrm   $tapping-term        s lsft  )
+
+  h (t! rhrm   $tapping-term        h rsft  )
+  a (t! rhrm   $tapping-term        a rmet  )
+  e (t! rhrm   $tapping-term        e rctl  )
+  i (t! rhrm   $tapping-term        i ralt  )
+
+  ;; all the other alfas and def regular typing characters for require-prior-idle-like behavior as suggested by sgraar here (https://www.reddit.com/r/ErgoMechKeyboards/comments/1qosvc0/comment/o7cmdzd/)
+  b (t! nomod b)
+  l (t! nomod l)
+  d (t! nomod d)
+  w (t! nomod w)
+  v (t! nomod v)
+  
+  j (t! nomod j)
+  f (t! nomod f)
+  o (t! nomod o)
+  u (t! nomod u)
+  ' (t! nomod ')
+
+  g (t! nomod g)
+  y (t! nomod y)
+
+  q (t! nomod q)
+  x (t! nomod x)
+  m (t! nomod m)
+  c (t! nomod c)
+  z (t! nomod z)
+
+  k (t! nomod k)
+  p (t! nomod p)
+  , (t! nomod ,)
+  . (t! nomod .)
+  ; (t! nomod ;)
+  spc (t! nomod spc)
+
+  ;; one-shot mods for Callum style modding
+  osm (one-shot $one-shot-timeout lmet)
+  oss (one-shot $one-shot-timeout lshift)
+  osa (one-shot $one-shot-timeout lalt)
+  osc (one-shot $one-shot-timeout lctrl)
+)
+
+;; home row mods templates mimicking urob's timerless home row mods implementation
+(deftemplate lhrm (tappingterm tap-key hold-key)  ;; left hand mods
+  (tap-hold-release-tap-keys-release $quick-tap-ms $tappingterm (multi $tap-key @tap) $hold-key $left-side-keys $home-row-left-keys)
+)
+
+(deftemplate rhrm (tappingterm tap-key hold-key)  ;; right hand mods
+  (tap-hold-release-tap-keys-release $quick-tap-ms $tappingterm (multi $tap-key @tap) $hold-key $right-side-keys $home-row-right-keys)
+)
+
+(defchordsv2
+  (i o) bspc $combo-timeout all-released (nav)
+  (, .) return $combo-timeout all-released (nav)
+  (w e) tab $combo-timeout all-released (nav)
+)
+
+(defvirtualkeys  
+  to-base (layer-switch graphite) ;; used in @tap alias to return to base layer on tap after hold-tap-release keys in an attempt to emulate ZMK require-prior-idle behavior
+)
+
+(defoverridesv2
+  (lsft ,) (lsft /) () ()
+  (lsft -) (lsft ') () ()
+  (lsft ') (lsft -) () ()
+  (lsft /) (lsft ,) () ()
+)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(deflayer graphite
+  grv  1    2    3    4    5    6    7    8    9    0    [    ]    bspc
+  tab  @b    @l    @d    @w    @v    @'    @f    @o    @u    @j    -    =    \
+  @es @n   @r   @t   @s    g    y   @h   @a   @e   @i    @,    ret
+  @os1 @q    @x    @m    @c    @z    @k    @p    @.    @;    /    rsft
+  @os2 @os3 @os4           @spcnav            ralt rmet rctl
+)
+
+(deflayer nomods
+  grv  1    2    3    4    5    6    7    8    9    0    [    ]    bspc
+  tab  b    l    d    w    v    '    f    o    u    j    -    =    \
+  @es  n    r    t    s    g    y    h    a    e    i    ,    ret
+  @os1 q    x    m    c    z    k    p    .    ;    /    rsft
+  @os2 @os3 @os4           @spc            ralt rmet rctl
+)
+
+(deflayer nav
+  grv  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12    bspc
+  tab  b    l    d    w    v    '    home    up    end    pgup    [    ]    \
+  @es  @osa @osc @osm @oss    g    esc   left    down   right    i    pgdn    ret
+  @os1 q    x    m    c    z    tab    bspc    del    ret    /    rsft
+  @os2 @os3 @os4           spc            ralt rmet rctl
+)
+
+

@@ -1,13 +1,16 @@
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=labwc &
+systemctl --user start --ignore-dependencies xdg-desktop-portal &
 solaar --window=hide --battery-icons=solaar &
 foot --server &
 mega-sync &
-kbuildsycoca6 &
 /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 kanshi &
 swayosd-server &
 swaync &
 waybar &
+flameshot &
 sunsetr &
 awww-daemon &
 vicinae server &
-~/.config/niri/scripts/swayidle.sh &
+~/.config/labwc/scripts/swayidle.sh &
+~/.config/custom_scripts/auto_start.sh &

@@ -6,8 +6,8 @@ binds {
     Mod+Space hotkey-overlay-title="Vicinae Toggle" { spawn "vicinae" "toggle"; }
     Mod+P hotkey-overlay-title="Vicinae Clipboard" { spawn "vicinae" "vicinae://launch/clipboard/history"; }
 
-    Mod+F hotkey-overlay-title="Run yazi" { spawn "ns.py" "-id" "yazi" "-s" "footclient --app-id=yazi -e yazi"; }
-    Mod+S hotkey-overlay-title="Run btop" { spawn "ns.py" "-id" "btop" "-s" "footclient --app-id btop -e sh -c btop"; }
+    Mod+F hotkey-overlay-title="Run yazi" { spawn "ns.py" "-id" "ghostty.terminal.yazi" "-s" "ghostty --class=ghostty.terminal.yazi -e yazi"; }
+    Mod+S hotkey-overlay-title="Run btop" { spawn "ns.py" "-id" "ghostty.terminal.btop" "-s" "ghostty --class=ghostty.terminal.btop -e btop"; }
     Mod+Slash hotkey-overlay-title="Run bitwarden" { spawn "ns.py" "-id" "Bitwarden" "-s" "bitwarden-desktop"; }
     // Mod+T hotkey-overlay-title="Run ticktick" { spawn "ns.py" "-id" "ticktick" "-s" "ticktick"; }
 

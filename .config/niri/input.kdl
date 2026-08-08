@@ -1,7 +1,7 @@
 input {
     keyboard {
         xkb {
-          layout "graphite_en_ansi, us"
+          layout "us, graphite_en_ansi"
         }
         numlock
         repeat-rate 35

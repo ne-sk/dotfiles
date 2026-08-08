@@ -84,6 +84,14 @@
 
 (setq org-modern-star 'replace)
 
+(require 'org-download)
+;; Drag-and-drop to `dired`
+(add-hook 'dired-mode-hook 'org-download-enable)
+
+(after! org-download
+    (setq org-download-method 'directory)
+    (setq org-download-image-dir "~/org/attachments"))
+
 (setq line-spacing 0.4)
 
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode) ;; removes the 's' key binding

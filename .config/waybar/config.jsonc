@@ -3,11 +3,11 @@
   "height": 40,
   "spacing": 8,
   "modules-left": [
-    // "mango/layout",
-    // "mango/workspaces",
-    // "mango/window",
-    "ext/workspaces",
-    "wlr/taskbar"
+    "mango/layout",
+    "mango/workspaces",
+    "mango/window"
+    // "ext/workspaces",
+    // "wlr/taskbar"
   ],
   "modules-center": [
     "clock"

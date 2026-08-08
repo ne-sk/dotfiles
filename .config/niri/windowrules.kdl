@@ -12,8 +12,8 @@ window-rule {
 // scratchpad applications
 window-rule {
   match app-id="Bitwarden"
-  match app-id="btop"
-  match app-id="yazi"
+  match app-id="ghostty.terminal.btop"
+  match app-id="ghostty.terminal.yazi"
   open-on-workspace "Scratchpad"
   open-floating true
   open-focused false
@@ -28,8 +28,8 @@ window-rule {
 }
 
 window-rule {
-  match app-id="btop"
-  match app-id="yazi"
+  match app-id="ghostty.terminal.btop"
+  match app-id="ghostty.terminal.yazi"
   default-window-height { fixed 600; }
   default-column-width { fixed 1000; }
 }
@@ -52,14 +52,14 @@ window-rule {
 }
 
 
-// // opacity rules
-// window-rule {
-//     match is-active=false
-//     opacity 0.85
-//     // background-effect {
-//     //   blur true
-//     // }
-// }
+// opacity rules
+window-rule {
+    match is-active=false
+    opacity 0.85
+    // background-effect {
+    //   blur true
+    // }
+}
 
 
 // blur {

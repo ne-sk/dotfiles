@@ -12,8 +12,12 @@ Snacks.setup({
 	dim = { enabled = true },
 	explorer = { enabled = false, replace_netrw = false },
 	image = {
-		enabled = true,
 		img_dirs = { "img", "images", "assets", "static", "public", "media", "attachments", "Attachments" },
+		doc = {
+			enabled = true,
+			max_width = 40,
+			max_height = 20,
+		},
 	},
 	indent = { enabled = true },
 	input = { enabled = true },

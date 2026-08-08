@@ -1,5 +1,3 @@
-source /usr/share/cachyos-fish-config/cachyos-config.fish
-
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
@@ -7,6 +5,12 @@ end
 starship init fish | source
 mise activate fish | source
 zoxide init fish --cmd cd | source
+# Replace ls with eza
+alias ls='eza -al --color=always --group-directories-first --icons=always' # preferred listing
+alias la='eza -a --color=always --group-directories-first --icons=always'  # all files and dirs
+alias ll='eza -l --color=always --group-directories-first --icons=always'  # long format
+alias lt='eza -aT --color=always --group-directories-first --icons=always' # tree listing
+alias l.="eza -a | grep -e '^\.'"      
 
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
@@ -17,6 +21,4 @@ function y
     rm -f -- "$tmp"
 end
 
-alias mountdrive="sudo mount -t auto -o rw,umask=000,uid=$(id -u),gid=$(id -g)"
-alias todo="nvim ~/todo.md"
 # COMPLETE=fish tms | source

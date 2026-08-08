@@ -9,6 +9,10 @@
       "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim"
     },
+    "coop.nvim": {
+      "rev": "b156e541316aee14be4ae64c93ed8bddb6d03bc1",
+      "src": "https://github.com/gregorias/coop.nvim"
+    },
     "diffview.nvim": {
       "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
       "src": "https://github.com/sindrets/diffview.nvim"
@@ -20,6 +24,10 @@
     "everforest": {
       "rev": "85a86eb62409e3ec88713bff3d1b9d7374e112e4",
       "src": "https://github.com/sainnhe/everforest"
+    },
+    "feed.nvim": {
+      "rev": "4e0903343c47b13aa5355ed267dbd58300bff8be",
+      "src": "https://github.com/neo451/feed.nvim"
     },
     "flash.nvim": {
       "rev": "b6346946d10d07998efee029fb0f7a593806d0cd",
