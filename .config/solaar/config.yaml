@@ -10,7 +10,7 @@
     headset_per_zone_lighting, headset-signature-startup, headset-signature-shutdown, headset-signature-passive, logivoice-nr-state, logivoice-ng-state,
     logivoice-comp-state, logivoice-deesser-state, logivoice-depopper-state, logivoice-limiter-state, logivoice-hpf-state]
   _battery: 4096
-  _config_cookie: [123, 34]
+  _config_cookie: [140, 112]
   _modelId: B02340820000
   _sensitive: {divert-keys: false}
   _serial: 2C83550F
