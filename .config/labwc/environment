@@ -7,3 +7,6 @@ XDG_MENU_PREFIX=arch-
 ELECTRON_OZONE_PLATFORM_HINT=auto
 
 XDG_CURRENT_DESKTOP=labwc
+
+XKB_DEFAULT_LAYOUT=graphite_en_ansi,us
+XKB_DEFAULT_OPTIONS=grp:lctrl_lalt_toggle
