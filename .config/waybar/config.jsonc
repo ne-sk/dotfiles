@@ -1,13 +1,15 @@
 {
   "layer": "top",
+  "position": "bottom",
   "height": 40,
-  "spacing": 8,
+  "spacing": 4,
   "modules-left": [
-    "mango/layout",
-    "mango/workspaces",
-    "mango/window"
-    // "ext/workspaces",
-    // "wlr/taskbar"
+    // "mango/layout",
+    // "mango/workspaces",
+    // "mango/window",
+    "ext/workspaces",
+    // "wlr/taskbar",
+    "mpris"
   ],
   "modules-center": [
     "clock"
@@ -15,6 +17,7 @@
   "modules-right": [
     "tray",
     "network",
+    // "temperature",
     "bluetooth",
     "pulseaudio",
     "battery",
@@ -27,10 +30,15 @@
   "mango/workspaces": {
     "format": "{icon}",
     "format-icons": {
-      "active": "",
-      "default": "",
-      "urgent": "",
-      "empty": ""
+      // "active": "",
+      // "default": "",
+      // "urgent": "",
+      // "empty": ""
+      // "1": "[term]",
+      // "2": "[code]",
+      // "3": "[personal]",
+      // "4": "[work]",
+      // "5": "[misc]"
     },
     "on-click": "activate",
     "on-click-right": "toggle",
@@ -39,15 +47,24 @@
   "mango/window": {
     "format": "{app_id}",
     // "tooltip": false,
-    "icon": true
+    "icon": true,
+    "icon-size": 18
   },
   "ext/workspaces": {
-    "on-click": "activate"
+    "format": "[{id}]",
+    "on-click": "activate",
+    "sort-by-name": false
   },
   "wlr/taskbar": {
     "icon-size": 20,
     "format": "{icon} {app_id}",
     "active-only": true
+  },
+  "mpris": {
+    "format": "| {title}",
+    "format-paused": "| <i>{title}</i>",
+    "title-len": 30
+    // "ignored-players": ["firefox"]
   },
   // modules center
   "clock": {
@@ -79,6 +96,14 @@
     },
     "on-click": "vicinae vicinae://launch/@dagimg-dot/store.vicinae.wifi-commander/scan-wifi"
   },
+  "temperature": {
+    "thermal-zone": 7,
+    "interval": 2,
+    // "hwmon-path": ["/sys/class/hwmon/hwmon2/temp1_input", "/sys/class/thermal/thermal_zone0/temp"],
+    // "critical-threshold": 80,
+    // "format-critical": "{temperatureC}°C ",
+    "format": "{temperatureC}°C "
+  },
   "bluetooth": {
     "format": " {num_connections}",
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
@@ -89,8 +114,8 @@
   },
   "pulseaudio": {
     "scroll-step": 2,
-    "format": " {volume}%",
-    "format-muted": " {volume}%",
+    "format": "  {volume}%",
+    "format-muted": "  {volume}%",
     "format-bluetooth": "󰂰 {volume}%",
     "format-bluetooth-muted": "󰂲 {volume}%",
     "format-source": "{volume}% ",

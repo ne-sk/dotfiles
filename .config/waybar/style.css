@@ -8,12 +8,12 @@
   text-shadow: none;
   transition: none;
   box-shadow: none;
-  background-color: #272e33;
-  color: #d3c6aa;
+  background-color: #2b2d37;
+  color: #c5cdd9;
 }
 
 window#waybar {
-  font-family: JetBrainsMono Nerd Font Propo;
+  font-family: Maple Mono NF;
   font-size: 14px;
 }
 
@@ -36,21 +36,71 @@ window#waybar {
 #network,
 #power-profiles-daemon,
 #clock,
+#temperature,
 #custom-notification {
   padding: 8px 8px;
 }
 
 /* ===== MODULES ===== */
 
+#layout {
+  border-bottom: 2px solid transparent;
+  border-top: 2px solid transparent;
+}
+
 #workspaces button {
   margin: 0 6px;
 }
 
-#workspaces button.active,
-#workspaces button.active * {
-  color: #e67e80;
+#workspaces button.empty {
+  opacity: 0.3;
 }
 
-#language {
-  margin: 0 8px;
+#workspaces button.active,
+#workspaces button.active * {
+  color: #d38aea;
+  font-weight: bold;
+  opacity: 1;
+}
+
+#workspaces {
+  border-bottom: 2px solid #5dbbc1;
+  border-top: 2px solid #5dbbc1;
+  border-radius: 10px;
+}
+
+#clock {
+  border-bottom: 2px solid #deb974;
+  border-top: 2px solid #deb974;
+  border-radius: 10px;
+}
+
+#network {
+  border-bottom: 2px solid #d38aea;
+  border-top: 2px solid #d38aea;
+  border-radius: 10px;
+}
+
+#bluetooth {
+  border-bottom: 2px solid #6cb6eb;
+  border-top: 2px solid #6cb6eb;
+  border-radius: 10px;
+}
+
+#pulseaudio {
+  border-bottom: 2px solid #a0c980;
+  border-top: 2px solid #a0c980;
+  border-radius: 10px;
+}
+
+#battery {
+  border-bottom: 2px solid #ec7279;
+  border-top: 2px solid #ec7279;
+  border-radius: 10px;
+}
+
+#custom-notification {
+  border-bottom: 2px solid #deb974;
+  border-top: 2px solid #deb974;
+  border-radius: 10px;
 }
