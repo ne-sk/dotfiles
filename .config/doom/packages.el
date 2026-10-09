@@ -55,7 +55,6 @@
 (package! mixed-pitch)
 ;; (package! org-superstar)
 (package! avy)
-(unpin! org)
 (unpin! org-roam)
 (package! org-roam-ui)
 (package! org-modern-indent

@@ -21,8 +21,8 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 14 :weight 'semi-light)
-     doom-variable-pitch-font (font-spec :family "Ubuntu Mono" :size 14 :weight 'semi-light))
+(setq doom-font (font-spec :family "Maple Mono NF" :size 15)
+     doom-variable-pitch-font (font-spec :family "Inter" :size 15))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -32,12 +32,12 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-;; (setq doom-theme 'doom-one)
+(setq doom-theme 'doom-one)
 ;; (setq doom-theme 'doom-vibrant)
 ;; `gruvbox-material' contrast and palette options
-(setq doom-gruvbox-material-background  "hard"  ; or hard (defaults to soft)
-     doom-gruvbox-material-palette     "material") ; or original (defaults to material)
-(setq doom-theme 'doom-gruvbox-material)
+;;(setq doom-gruvbox-material-background  "hard"  ; or hard (defaults to soft)
+;;     doom-gruvbox-material-palette     "material") ; or original (defaults to material)
+;; (setq doom-theme 'doom-gruvbox-material)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -89,10 +89,20 @@
 (add-hook 'dired-mode-hook 'org-download-enable)
 
 (after! org-download
-    (setq org-download-method 'directory)
-    (setq org-download-image-dir "~/org/attachments"))
+  (setq org-download-method 'directory)
+  (setq-default org-download-image-dir "/home/nesk/org/attachments"))
 
 (setq line-spacing 0.4)
+
+(map!
+ :nvm "k"   #'evil-previous-visual-line
+ :nvm "<up>"   #'evil-previous-visual-line
+ :o   "k"   #'evil-previous-line
+ :nvm "j" #'evil-next-visual-line
+ :nvm "<down>" #'evil-next-visual-line
+ :o   "j" #'evil-next-line
+ :nvm "<home>" #'evil-beginning-of-visual-line
+ :nvm "<end>"  #'evil-end-of-visual-line)
 
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode) ;; removes the 's' key binding
 
