@@ -4,5 +4,10 @@ profile {
 
 profile {
   output eDP-1 disable
-  output DP-4 enable mode 3840x2160@60Hz position 0,0 scale 1.25
+  output DP-4 enable scale 1.25
+}
+
+profile {
+  output eDP-1 disable
+  output DP-5 enable scale 1.25
 }
