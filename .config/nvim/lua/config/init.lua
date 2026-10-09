@@ -1,7 +1,0 @@
-require("config.options")
-require("config.keymaps")
-require("config.lsp")
-require("config.autocmds")
-require("config.session")
-require("config.diagnostics")
-require("config.ui2")
