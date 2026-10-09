@@ -1,6 +1,11 @@
+# custom-shader = shaders/cursor-smear.glsl
+# custom-shader = shaders/northern-lights.glsl
+# custom-shader = shaders/bloom.glsl
+# custom-shader = shaders/cosmic-bg.glsl
+
 # fonts
-font-family = "JetBrains Mono Nerd Font"
-font-family-bold = "JetBrains Mono Nerd Font"
+font-family = "JetBrainsMono Nerd Font Mono"
+font-family-bold = "JetBrainsMono Nerd Font Mono"
 font-family-italic = "Maple Mono NF"
 font-family-bold-italic = "Maple Mono NF"
 font-size = 11.5
@@ -11,7 +16,7 @@ mouse-hide-while-typing = true
 mouse-scroll-multiplier = 1
 
 # theme
-theme = gruvbox-material-hard-dark
+theme = Everforest Dark Hard
 cursor-invert-fg-bg = true
 window-theme = ghostty
 split-divider-color = #33CCFF
@@ -27,14 +32,11 @@ window-decoration = false
 copy-on-select = clipboard
 
 # keybinds
-# keybind = ctrl+arrow_up=goto_split:up
-# keybind = ctrl+k=goto_split:up
-# keybind = ctrl+arrow_down=goto_split:down
-# keybind = ctrl+j=goto_split:down
-# keybind = ctrl+arrow_left=goto_split:left
-# keybind = ctrl+h=goto_split:left
-# keybind = ctrl+arrow_right=goto_split:right
-# keybind = ctrl+l=goto_split:right
-#
-# keybind = ctrl+v=new_split:right
-# keybind = ctrl+h=new_split:down
+keybind = performable:ctrl+arrow_up=goto_split:up
+keybind = performable:ctrl+k=goto_split:up
+keybind = performable:ctrl+arrow_down=goto_split:down
+keybind = performable:ctrl+j=goto_split:down
+keybind = performable:ctrl+arrow_left=goto_split:left
+keybind = performable:ctrl+h=goto_split:left
+keybind = performable:ctrl+arrow_right=goto_split:right
+keybind = performable:ctrl+l=goto_split:right
