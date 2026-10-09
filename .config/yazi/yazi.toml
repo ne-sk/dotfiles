@@ -1,0 +1,19 @@
+[opener]
+edit = [{ run = "nvim %s", block = true }]
+edit-image = [{ run = "pinta %s", block = false }]
+
+[open]
+rules = [
+  { mime = "text/plain", use = "edit" },
+  { mime = "*/*", use = "open" },
+  { mime = "text/plain", use = "edit" },
+  { mime = "application/json", use = "edit" },
+  { mime = "image/*", use = [
+    "open",
+    "edit-image",
+  ] },
+  { url = "*.html", use = [
+    "open",
+    "edit",
+  ] },
+]

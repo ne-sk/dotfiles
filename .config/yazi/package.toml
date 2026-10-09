@@ -17,3 +17,8 @@ hash = "d73a2192b13f0267461d5424a7f10cd1"
 use = "matt-dong-123/gruvbox-material"
 rev = "e0fd2d8"
 hash = "8f46ca96c0bbe1bdfb4fa201dd5eed4b"
+
+[[flavor.deps]]
+use = "BennyOe/tokyo-night"
+rev = "8e6296f"
+hash = "d9da921c3bd37ba32ee27a8a7a40461f"
